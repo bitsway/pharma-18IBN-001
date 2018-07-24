@@ -12219,6 +12219,8 @@ function chemist_submit() {
 								}else if (resultArray[0]=='SUCCESS'){																								
 									$("#error_chemist_add_page").html(resultArray[1]);
 									$("#chSButton").show();
+									alert (chPhoto)
+									alert (imageName)
 									uploadPhoto(chPhoto, imageName);
 									
 								}else{				
@@ -13847,7 +13849,9 @@ function failProfile(error) {
 }
 
 function uploadPhoto(imageURI, imageName) {
-   // alert (localStorage.photo_submit_url)
+    alert (localStorage.photo_submit_url)
+    alert (imageURI)
+    alert (imageName)
 	var options = new FileUploadOptions();
     options.fileKey="upload";
     options.fileName=imageName;
