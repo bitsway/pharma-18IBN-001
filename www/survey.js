@@ -1569,10 +1569,10 @@ function check_user() {
 			//alert (data)
 			if (status=='success'){
 				localStorage.base_url='';
-				alert ()
+				
 				var dtaStr=data.replace('<start>','').replace('<end>','')
 				var resultArray = dtaStr.split('<fd>');	
-				alert (resultArray.length)	
+				
 					if(resultArray.length>3){
 						var base_url=resultArray[0];
 						var photo_url=resultArray[1];
@@ -11724,6 +11724,31 @@ function getDocppmDataPlan(){
 		
 	}
 
+// ================OrderImage============
+
+function getOrderImage() {
+	navigator.camera.getPicture( onSuccess_OrderImage, onFail_OrderImage, {
+		quality: 90,
+		targetWidth: 400,
+       // destinationType: Camera.DestinationType.FILE_URI,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true ,
+        correctOrientation: true,
+        saveToPhotoAlbum: true
+    });
+}
+function onSuccess_OrderImage(imageURI) {
+    var image = document.getElementById('myImageOrder');
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#orderVisitPhoto").val(imagePath);	
+}
+function onFail_OrderImage(message) {
+	imagePath="";
+    alert('Failed because: ' + message);
+}
+
+
+// ===================================
 
 function getDocImage() {
 	navigator.camera.getPicture( onSuccess_docVisitImage, onFail_docVisitImage, {
@@ -12219,8 +12244,7 @@ function chemist_submit() {
 								}else if (resultArray[0]=='SUCCESS'){																								
 									$("#error_chemist_add_page").html(resultArray[1]);
 									$("#chSButton").show();
-									alert (chPhoto)
-									alert (imageName)
+									
 									uploadPhoto(chPhoto, imageName);
 									
 								}else{				
@@ -13849,9 +13873,7 @@ function failProfile(error) {
 }
 
 function uploadPhoto(imageURI, imageName) {
-    alert (localStorage.photo_submit_url)
-    alert (imageURI)
-    alert (imageName)
+    
 	var options = new FileUploadOptions();
     options.fileKey="upload";
     options.fileName=imageName;
