@@ -5080,8 +5080,8 @@ function lscVisitSubmit(){
 																$("#visit_submit").show();
 																$("#visit_save_div").show();	
 															}else if (resultArray[0]=='SUCCESS'){
-																alert (image_path)
-																alert (imageName)
+																// alert (image_path)
+																// alert (imageName)
 																uploadPhoto(image_path, imageName);							
 														//		-----------
 																localStorage.visit_client=''
