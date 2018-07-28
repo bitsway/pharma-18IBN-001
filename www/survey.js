@@ -4887,6 +4887,7 @@ function replace_special_char(string_value){
 }
 
 function lscVisitSubmit(){	
+	
 	$("#errorChkVSubmit").text("");
 	$("#visit_save_div").hide();
 	
@@ -4950,10 +4951,16 @@ function lscVisitSubmit(){
 	
 	
 	var currentDate_1 = new Date()
-	var day_1 = currentDate_1.getDate();if(day_1.length==1)	{day_1="0" +day_1};
-	var month_1 = currentDate_1.getMonth() + 1;if(month_1.length==1)	{month_1="0" +month_1};
+	var day_1 = currentDate_1.getDate();if(parseInt(day_1)<10)	{day_1="0" +day_1};
+	var month_1 = currentDate_1.getMonth() + 1;if(parseInt(month_1)<10)	{month_1="0" +month_1};
 	var year_1 = currentDate_1.getFullYear()
 	var today_1=  year_1 + "-" + month_1 + "-" + day_1
+	
+	var date_check= currentDate_1.getFullYear()+ "-" + (parseInt(currentDate_1.getMonth())+ parseInt(1)) + "-" + currentDate_1.getDate()
+	
+	if ((collection_date=='') && (productOrderStr.length < 10)){collection_date=today_1}
+	if ((delivery_date=='')&& (productOrderStr.length < 10)){delivery_date=today_1}
+	
 	
 	
 	if (localStorage.delivery_date_flag!='YES'){
@@ -4970,15 +4977,16 @@ function lscVisitSubmit(){
 //		$("#errorChkVSubmit").html('Please enter collection date');
 //		$("#visit_save_div").show();
 //	}
-	
-	if  (localStorage.sync_date!=today_1){
+	//alert (localStorage.sync_date)
+	//alert (date_check)
+	if  (localStorage.sync_date!=date_check){
 		$("#errorChkVSubmit").html('Please sync first');
 		$("#visit_save_div").show()
 		}
 		else{
-				//alert (delivery_date)
+				
 				if  (((delivery_date.length < 8) || (collection_date.length < 8)) && (productOrderStr.length > 20)){
-					$("#errorChkVSubmit").html('Please enter collection and delivery date');
+					//$("#errorChkVSubmit").html('Please enter collection and delivery date');
 					$("#visit_save_div").show()
 				}
 				else{
