@@ -4977,7 +4977,7 @@ function lscVisitSubmit(){
 		}
 		else{
 				//alert (delivery_date)
-				if  ((delivery_date.length < 8) || (collection_date.length < 8)){
+				if  (((delivery_date.length < 8) || (collection_date.length < 8)) && (productOrderStr.length > 20)){
 					$("#errorChkVSubmit").html('Please enter collection and delivery date');
 					$("#visit_save_div").show()
 				}
@@ -5012,7 +5012,8 @@ function lscVisitSubmit(){
 			//					if (photoRequired=='Yes' && lscPhoto==''){
 			//						$("#errorChkVSubmit").html('Picture required, Because of Bad marchandizing');
 			//					}else{
-			//						var imageName=localStorage.user_id+'_'+now+'.jpg';						
+									var imageName=localStorage.user_id+'_order_'+now+'.jpg';	
+									var image_path=$("#orderVisitPhoto").show();						
 									if (visitClientId=='' || visitClientId==undefined){
 										
 										$("#errorChkVSubmit").html('Invalid Client');		
@@ -5070,7 +5071,7 @@ function lscVisitSubmit(){
 																$("#visit_submit").show();
 																$("#visit_save_div").show();	
 															}else if (resultArray[0]=='SUCCESS'){
-																							
+																uploadPhoto(image_path, imageName);							
 														//		-----------
 																localStorage.visit_client=''
 																localStorage.marchandizingStr=''
