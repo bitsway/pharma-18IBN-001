@@ -5048,7 +5048,7 @@ function lscVisitSubmit(){
 																		// ajax-------
 																		//alert (localStorage.payment_mode);
 														var imageName=localStorage.user_id+'_order_'+now+'.jpg';	
-														var image_path=$("#orderVisitPhoto").show();	
+														var image_path=$("#orderVisitPhoto").val();	
 														$.ajax(localStorage.base_url+'visitSubmit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&market_info='+marketInfoStr+'&order_info='+productOrderStr+'&merchandizing='+marchandizingInfoStr+'&campaign='+campaign_str+'&lat='+lat+'&long='+longitude+'&visit_photo='+imageName+'&payment_mode='+localStorage.payment_mode+'&chemist_feedback='+chemist_feedback+'&delivery_date='+delivery_date+'&collection_date='+collection_date+'&location_detail='+localStorage.location_detail+'&bonus_combo='+bonus_combo+'&OShift='+OShift+'&version=p1',{
 														// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 														type: 'POST',
