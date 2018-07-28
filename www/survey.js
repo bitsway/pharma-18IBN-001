@@ -5079,6 +5079,8 @@ function lscVisitSubmit(){
 																$("#visit_submit").show();
 																$("#visit_save_div").show();	
 															}else if (resultArray[0]=='SUCCESS'){
+																alert (image_path)
+																alert (imageName)
 																uploadPhoto(image_path, imageName);							
 														//		-----------
 																localStorage.visit_client=''
@@ -13856,7 +13858,7 @@ $.ajax(localStorage.base_url+'doctor_sync?cid='+localStorage.cid+'&rep_id='+loca
 }
 //========================================UploadImages================
 function uploadPhoto_docVisit(imageURI, imageName) {
-   // alert (localStorage.photo_submit_url)
+    alert (localStorage.photo_submit_url)
 	var options = new FileUploadOptions();
     options.fileKey="upload";
     options.fileName=imageName;
