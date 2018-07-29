@@ -1527,7 +1527,7 @@ function check_user() {
 	
 	
 	
-	// var  apipath_base_photo_dm='http://w02.yeapps.com/vitalac/syncmobile_417_new_ibn_newtest_T/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	// var  apipath_base_photo_dm='http://w02.yeapps.com/vitalac/syncmobile_417_new_ibn_newtest/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 
 
 
@@ -11097,9 +11097,9 @@ function page_addDoc() {
 		 $('#addSpaciality').append(opt);
 		
 	}
-	var divValue='<table width="100%" border="0"><tr><td width="40%">SNV Route</td><td>:</td> <td><input type="text" name="addNMDRoute"   id="addNMDRoute" placeholder="SNV Route"  style="background-color:#CCC" ></td></tr></table>'
+	var divValue='<table width="100%" border="0"><tr><td width="40%"></td><td></td> <td><input type="hidden" name="addNMDRoute"   id="addNMDRoute" placeholder="SNV Route"  style="background-color:#CCC" ></td></tr></table>'
 	if (localStorage.cid=='IPINMD'){
-		 divValue='<table width="100%" border="0"><tr><td width="40%">NMD Route</td><td>:</td> <td><input type="text" name="addNMDRoute"   id="addNMDRoute" placeholder="NMD Route"  style="background-color:#CCC" ></td></tr></table>'
+		 divValue='<table width="100%" border="0"><tr><td width="40%"></td><td></td> <td><input type="hidden" name="addNMDRoute"   id="addNMDRoute" placeholder="NMD Route"  style="background-color:#CCC" ></td></tr></table>'
 		
 		
 	}
@@ -11512,8 +11512,9 @@ function confirmDocSubmit() {
 		pharma_route= $("#pharma_route").val();
 		nmd_route= $("#nmd_route").val();
 		
-		if ((pharma_route=='') || (nmd_route=='')){ 
-			$("#myerror_doctorCon_add").html('Please entry SNV & Pharma route ');}else{
+		//if ((pharma_route=='') || (nmd_route=='')){ 
+		if ((pharma_route=='') ){ 
+			$("#myerror_doctorCon_add").html('Please entry route ');}else{
 			$("#myerror_doctorCon_add").html('' )
 	  $("#wait_image_docConAdd").show();
 		//$("#error_doc_confirm").val(localStorage.report_url+'confirmDoc?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&docID='+localStorage.confirmDoc)
