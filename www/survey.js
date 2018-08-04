@@ -5082,7 +5082,13 @@ function lscVisitSubmit(){
 															}else if (resultArray[0]=='SUCCESS'){
 																// alert (image_path)
 																// alert (imageName)
-																uploadPhoto(image_path, imageName);							
+																uploadPhoto(image_path, imageName);		
+																
+																var image = document.getElementById('myImageOrder');
+															    image.src = '';
+																imagePath = '';
+																$("#orderVisitPhoto").val(imagePath);	
+																					
 														//		-----------
 																localStorage.visit_client=''
 																localStorage.marchandizingStr=''
