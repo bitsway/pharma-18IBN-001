@@ -1527,12 +1527,12 @@ function check_user() {
 	
 	
 	
-	// var  apipath_base_photo_dm='http://w02.yeapps.com/vitalac/syncmobile_417_new_ibn_newtest/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	 var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 
 
 
 
-    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_new_tour/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+   // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_new_tour/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 
 	var user_id=$("#user_id").val();
 	var user_pass=$("#user_pass").val();
@@ -1704,7 +1704,10 @@ function check_user() {
 													localStorage.cl_subcatStr=resultArray[39]
 													
 													localStorage.repType=resultArray[40]
-													//alert (localStorage.repType)
+													
+													localStorage.prSampleStr =resultArray[41]
+													
+													//alert (resultArray[40])
 													
 													
 													
@@ -2077,6 +2080,35 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 														
 													
 													}
+													
+													
+													
+													
+													//Sample=========================
+													//alert (localStorage.prSampleStr)
+													var prSampletList=localStorage.prSampleStr.split('<rd>');
+													var prSampleLength=prSampletList.length;
+													var product_tbl_doc_sample='';
+	
+													for (j=0; j < prSampleLength; j++){
+														var sampleArray2 = productList[j].split('<fd>');
+														var sample_id2=sampleArray2[0];	
+														var sample_name2=sampleArray2[1];
+														var sample_qty='';																		
+														var sample_price='0'
+													
+														
+														
+												
+														//-------------Sample----------
+														
+														product_tbl_doc_sample=product_tbl_doc_sample+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_sample(\''+sample_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;"><input class="docSample" maxlength="4" onChange="getSampleData_keyup(\''+sample_id2+'\')" type="number" id="sample_qty'+sample_id2+'"  value="'+sample_qty+'" placeholder="0" ><input type="hidden" id="sample_id'+sample_id2+'" value="'+sample_id2+'" ><input type="hidden" id="sample_price'+sample_id2+'" value="'+sample_price+'" ><input type="hidden" id="sample_name'+sample_id2.toUpperCase()+'" value="'+sample_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">&nbsp;&nbsp;<font  class="name" >'+sample_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
+
+														
+														
+													
+													}
+													// Sample End===================
 													//product_tbl_order=product_tbl_order+'</ul>';//</table>';	
 													//product_tbl_doc_campaign=product_tbl_doc_campaign+'</ul>';//+'</table>'	//+'</ul>';						
 													//product_tbl_doc_sample=product_tbl_doc_sample+'</ul>';
@@ -2363,8 +2395,12 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 														
 														for (j=0; j < with_whomList.length; j++){
 														if (j==0){checkName='v_with_AM'}
-														if (j==1){checkName='v_with_RSM'}
-														if (j==2){checkName='v_with_MPO'}
+														if (j==1){checkName='v_with_ZM'}
+														if (j==2){checkName='v_with_RSM'}
+														if (j==3){checkName='v_with_HOP'}
+														if (j==4){checkName='v_with_MPO'}
+														
+														
 														with_whom=with_whom+'<td ><input type="checkbox" name="'+checkName+'" value="'+with_whomList[j]+'" id="'+checkName+'" >  <label for="'+checkName+'"><font style=" font-size:10px">'+with_whomList[j]+'</font></label></td>'
 															
 														}
@@ -6398,6 +6434,7 @@ function campaign_as_sample(){
 //--------------------------------- Sample: Show Sample from home
 
 function getDocSampleData(){	
+	
 	var sampleProductList=localStorage.productSampleStr.split('<rd>');
 	var sampleProductLength=sampleProductList.length;
 	//alert (localStorage.productSampleStr);
@@ -6420,7 +6457,8 @@ function getDocSampleData(){
 		
 		localStorage.sample_show_1=sample_show_1;
 		sample_show_1=sample_show_1.replace('undefined','')
-		//alert (sample_show_1.indexOf('undefined'));
+		
+		
 		if  (sample_show_1.indexOf('undefined')==-1 ){
 			
 			$('#doc_sample').empty();
@@ -6562,7 +6600,7 @@ function getSampleData_keyup(product_id){
 	
 		localStorage.productSampleStr=productSampleStr
 	}
-	
+	//alert (localStorage.productSampleStr)
 	//	------------------------------------------------------
 }
 	
@@ -7370,11 +7408,14 @@ function visitSubmit_doc(){
 	var today_1=  year_1 + "-" + month_1 + "-" + day_1
 	
 	var v_with_AM=$("input[name=v_with_AM]:checked").val(); if (v_with_AM==undefined){v_with_AM=''}
-	var v_with_MPO=$("input[name=v_with_MPO]:checked").val(); if (v_with_MPO==undefined){v_with_MPO=''}
+	var v_with_ZM=$("input[name=v_with_ZM]:checked").val(); if (v_with_ZM==undefined){v_with_ZM=''}
 	var v_with_RSM=$("input[name=v_with_RSM]:checked").val(); if (v_with_RSM==undefined){v_with_RSM=''}
+	var v_with_HOP=$("input[name=v_with_HOP]:checked").val(); if (v_with_HOP==undefined){v_with_HOP=''}
+	var v_with_MPO=$("input[name=v_with_MPO]:checked").val(); if (v_with_MPO==undefined){v_with_MPO=''}
+	
 	
 	//alert (v_with_AM)
-	var v_with=v_with_AM+"|"+v_with_MPO+"|"+v_with_RSM
+	var v_with=v_with_AM+"|"+v_with_ZM+"|"+v_with_RSM+"|"+v_with_HOP+"|"+v_with_MPO
 	//v_with=v_withGet.replace('undefined')
 	//alert (v_with)
 	
@@ -7547,8 +7588,11 @@ function visitSubmit_doc(){
 				//										$("#checkLocationProfileUpdate").html('');
 														
 														$("#v_with_AM").attr('checked', false);
-														$("#v_with_MPO").attr('checked', false);
+														$("#v_with_ZM").attr('checked', false);
 														$("#v_with_RSM").attr('checked', false);
+														
+														$("#v_with_HOP").attr('checked', false);
+														$("#v_with_MPO").attr('checked', false);
 														
 														
 														
@@ -7812,10 +7856,11 @@ function cancellDocvisit(){
 	var today_1=  year_1 + "-" + month_1 + "-" + day_1
 	
 	var v_with_AM=$("input[name=v_with_AM]:checked").val(); if (v_with_AM==undefined){v_with_AM=''}
-	var v_with_MPO=$("input[name=v_with_MPO]:checked").val(); if (v_with_MPO==undefined){v_with_MPO=''}
+	var v_with_ZM=$("input[name=v_with_ZM]:checked").val(); if (v_with_ZM==undefined){v_with_ZM=''}
 	var v_with_RSM=$("input[name=v_with_RSM]:checked").val(); if (v_with_RSM==undefined){v_with_RSM=''}
-	//alert (v_with_AM)
-	var v_with=v_with_AM+"|"+v_with_MPO+"|"+v_with_RSM
+	var v_with_HOP=$("input[name=v_with_HOP]:checked").val(); if (v_with_HOP==undefined){v_with_HOP=''}
+	var v_with_MPO=$("input[name=v_with_MPO]:checked").val(); if (v_with_MPO==undefined){v_with_MPO=''}
+	var v_with=v_with_AM+"|"+v_with_ZM+"|"+v_with_RSM+"|"+v_with_HOP+"|"+v_with_MPO
 	//v_with=v_withGet.replace('undefined')
 	//alert (v_with)
 	if (lat=='' || lat==0 || longitude=='' || longitude==0 ){
@@ -7962,8 +8007,15 @@ function cancellDocvisit(){
 				//										$("#checkLocationProfileUpdate").html('');
 														
 														$("#v_with_AM").attr('checked', false);
-														$("#v_with_MPO").attr('checked', false);
+														$("#v_with_ZM").attr('checked', false);
 														$("#v_with_RSM").attr('checked', false);
+														
+														$("#v_with_HOP").attr('checked', false);
+														$("#v_with_MPO").attr('checked', false);
+														
+														
+														
+														
 														
 														
 														
@@ -8106,11 +8158,24 @@ function saveDocvisit(){
 	var year_1 = currentDate_1.getFullYear()
 	var today_1=  year_1 + "-" + month_1 + "-" + day_1
 	
+	//var v_with_AM=$("input[name=v_with_AM]:checked").val(); if (v_with_AM==undefined){v_with_AM=''}
+//	var v_with_MPO=$("input[name=v_with_MPO]:checked").val(); if (v_with_MPO==undefined){v_with_MPO=''}
+//	var v_with_RSM=$("input[name=v_with_RSM]:checked").val(); if (v_with_RSM==undefined){v_with_RSM=''}
+//	//alert (v_with_AM)
+//	var v_with=v_with_AM+"|"+v_with_MPO+"|"+v_with_RSM
+	
 	var v_with_AM=$("input[name=v_with_AM]:checked").val(); if (v_with_AM==undefined){v_with_AM=''}
-	var v_with_MPO=$("input[name=v_with_MPO]:checked").val(); if (v_with_MPO==undefined){v_with_MPO=''}
+	var v_with_ZM=$("input[name=v_with_ZM]:checked").val(); if (v_with_ZM==undefined){v_with_ZM=''}
 	var v_with_RSM=$("input[name=v_with_RSM]:checked").val(); if (v_with_RSM==undefined){v_with_RSM=''}
+	var v_with_HOP=$("input[name=v_with_HOP]:checked").val(); if (v_with_HOP==undefined){v_with_HOP=''}
+	var v_with_MPO=$("input[name=v_with_MPO]:checked").val(); if (v_with_MPO==undefined){v_with_MPO=''}
+	
+	
 	//alert (v_with_AM)
-	var v_with=v_with_AM+"|"+v_with_MPO+"|"+v_with_RSM
+	var v_with=v_with_AM+"|"+v_with_ZM+"|"+v_with_RSM+"|"+v_with_HOP+"|"+v_with_MPO
+	
+	
+	
 	var v_shift=$("input[name=v_shift]:checked").val();
 	if (lat=='' || lat==0 || longitude=='' || longitude==0 ){
 							
@@ -8235,8 +8300,11 @@ function saveDocvisit(){
 											
 									//alert (localStorage.docSaveData)
 									$("#v_with_AM").attr('checked', false);
-									$("#v_with_MPO").attr('checked', false);
+									$("#v_with_ZM").attr('checked', false);
 									$("#v_with_RSM").attr('checked', false);
+									
+									$("#v_with_HOP").attr('checked', false);
+									$("#v_with_MPO").attr('checked', false);
 									
 									
 									$("#errorChkVSubmit_doc").html('Saved Successfully');
@@ -10565,6 +10633,8 @@ function page_doctor_profile(getData) {
 									
 									$("#dOtherChamber").val(dOtherChamber)
 									$("#dPharmaRoute").val(dPharmaRoute)
+									$("#dPharmaRoute").val(market_Id)
+									
 									$("#dNMDRoute").val(dNMDRoute)
 									
 									//$("#dDistrict").val(dDistrict+'|'+dThana)
@@ -11141,7 +11211,7 @@ $.ajax(localStorage.report_url+'microUnionReady?cid='+localStorage.cid+'&rep_id=
 										 $('#addMicrounion').append(opt);
 										
 									}
-									
+									$("#addPharmaRoute").val(market_Id);	
 								
 							}else{	
 								alert ('Network Timeout. Please check your Internet connection')
