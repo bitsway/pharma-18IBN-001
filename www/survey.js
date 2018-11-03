@@ -1521,24 +1521,9 @@ function check_user() {
 	//Main
 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/kpl/syncmobile_417_new_ibn_newtest/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	//localStorage.path_value_tour='http://127.0.0.1:8000/kpl/tour_web/'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/demo/syncmobile_417_new_ibn_newtest/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
-	
-	
-	
-	
-	
-	
-	var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	localStorage.path_value_tour='http://w05.yeapps.com/kpl/tour_web/'
-	
-	
-	
-	
-	
-	//var path_value='http://w05.yeapps.com/kpl/team_report_mobile/teamShow_web?'
 	
 	
 	
@@ -1547,7 +1532,7 @@ function check_user() {
 
 
 
-   // var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_new_tour/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+    var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_new_tour/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 
 	var user_id=$("#user_id").val();
 	var user_pass=$("#user_pass").val();
@@ -2717,32 +2702,9 @@ function tour(){
 	//if (localStorage.user_type=='rep'){
 		//showSubmitDocShow()
 		
-	//	addMarketListTour()
-	
-	
-	//alert (localStorage.path_value_tour)
-	var linkPath="window.open('"+localStorage.path_value_tour+"tourShow_web?"+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"&monthPass=This', '_system');"
-	var linkPath1="window.open('"+localStorage.path_value_tour+"tourShow_web?"+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"&monthPass=Next', '_system');"
-			var tour_combo='<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onclick="'+linkPath+'">'+'<input type="submit"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     This Month    "   /></td></tr></table></li>';
-			var tour_combo1='<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onclick="'+linkPath1+'">'+'<input type="submit"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Next Month    "   /></td></tr></table></li>';
-			
-	$('#tour_web_lv').empty();
-	$('#tour_web_lv').append(tour_combo);	
-	
-	$('#tour_web_lv_next').empty();
-	$('#tour_web_lv_next').append(tour_combo1);
+		addMarketListTour()
 	
 	$("#err_marketTour").html('');
-	$("#wait_image_refresh").hide();
-	
-	$("#refresh_white").hide()
-	$("#wait_image_retTour").hide()
-	$("#TShow").hide()
-	$("#NShow").hide()
-	
-	
-	
-	$.afui.loadContent("#page_tour_market",true,true,'right');	 
 }
 function team(){
 	
@@ -2750,7 +2712,7 @@ function team(){
 	localStorage.saved_data_submit=0;
 	localStorage.doctor_flag=0;
 	localStorage.tour_doc_str=''
-	
+
 	page_pending()
 	//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
 }
@@ -2761,7 +2723,6 @@ function page_pending(){
 	$("#err_pendingTour").html('')
 	$("#err_pendingTour").show();
 	$("#wait_image_pendingTour").show();
-	
 	//alert (localStorage.base_url+'tourPending?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 	//$("#tourpendingTxt").text(localStorage.base_url+'tourPending?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
@@ -2820,12 +2781,7 @@ function page_pending(){
 			}
 			$.afui.loadContent("#page_tour_pending",true,true,'right');	 
 	
-		var linkPath="window.open('"+localStorage.path_value_tour+"teamShow_web?"+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"&monthPass=This', '_system');"
 	
-			var tour_combo='<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onclick="'+linkPath+'">'+'<input type="submit"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Team    "   /></td></tr></table>';
-			$('#teamSS').empty();
-			$('#teamSS').append(tour_combo);	
-			
 }
 
 function repCancelReqShow_sup(){

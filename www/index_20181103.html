@@ -3661,8 +3661,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         </table>
 </header> 
     <div class="panel" id="page_tour_market" style="background-color:#EDFEED">
-    </br></br></br>
-       
+    <!--</br>--></br></br>
+    <table width="100%" border="0">
+  <tr>
+    <td><ul class="list" id="tour_web_lv" style="background-color:#EDFEED"></ul> </td>
+    <td><ul class="list" id="tour_web_lv_next" style="background-color:#EDFEED"></ul></td>
+  </tr>
+</table>
+
+      
                 
 <!-- <table width="100%" border="0">
 <tr>
@@ -3726,6 +3733,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <div><span class="market" style="font-size:16px; color:#009191"  ></span></div>   
 
         <br/> 
+        
+        		<div id="teamSS"></div>
               
                 <div id="tour_pending_combo_id_lv" >				
                
@@ -5340,12 +5349,21 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                	<div  style="font-size:18px"><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>
 					<br>
                     Doctor Catagory:
-                           <select name="medicine_3" id="medicine_3" >
+                           <!--<select name="medicine_3" id="medicine_3" >
                              <option value=""></option>
                              <option value="NS">NS</option>
                              <option value="S">S</option>
                              <option value="M">M</option>
                              <option value="O">O</option>
+                           </select>-->
+                           <select name="medicine_3" id="medicine_3" >
+                             <option value=""></option>
+                             <option value="LPD">LPD</option>
+                             <option value="PDP">PDP</option>
+                             <option value="CPD">CPD</option>
+                             <option value="BP">BP</option>
+                             <option value="OTS">OTS</option>
+                             <option value="Others">Others</option>
                            </select>
 					<br><br>
                      <input type="hidden" id="errorShow"  name="errorShow"  style="width:100%; height:200px;"/>
@@ -5872,4 +5890,4 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
 </body>
 
-</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
