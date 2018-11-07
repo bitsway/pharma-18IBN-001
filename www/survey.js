@@ -2727,14 +2727,20 @@ function tour(){
 	//alert (localStorage.path_value_tour)
 	var linkPath="window.open('"+localStorage.path_value_tour+"tourShow_web?"+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"&monthPass=This', '_system');"
 	var linkPath1="window.open('"+localStorage.path_value_tour+"tourShow_web?"+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"&monthPass=Next', '_system');"
-			var tour_combo='<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onclick="'+linkPath+'">'+'<input type="submit"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     This Month    "   /></td></tr></table></li>';
-			var tour_combo1='<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onclick="'+linkPath1+'">'+'<input type="submit"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Next Month    "   /></td></tr></table></li>';
+	var linkPath2="window.open('"+localStorage.path_value_tour+"amndShow_web?"+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"&monthPass=Next', '_system');"
+			
+			var tour_combo='<img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="this.jpg" onclick="'+linkPath+'">';
+			var tour_combo1='<img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="next.jpg" onclick="'+linkPath1+'">';
+			var tour_combo2='<img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="amnd.png" onclick="'+linkPath2+'">';
 			
 	$('#tour_web_lv').empty();
 	$('#tour_web_lv').append(tour_combo);	
 	
 	$('#tour_web_lv_next').empty();
 	$('#tour_web_lv_next').append(tour_combo1);
+	
+	$('#amnd_web_lv').empty();
+	$('#amnd_web_lv').append(tour_combo2);
 	
 	$("#err_marketTour").html('');
 	$("#wait_image_refresh").hide();
@@ -2817,8 +2823,13 @@ function page_pending(){
 						  
 				 });//end ajax
 			if (localStorage.user_type=='sup'){
-				$("#cReqShow").html('<a onClick="repCancelReqShow_sup()" style="font-size:18px; color:#FFF; " >PendingApproved</a> ');
+				var linkPath="window.open('"+localStorage.path_value_tour+"repPendingCancel_web?"+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"', '_system');"
+			
+			var tour_combo='<a style="font-size:18px; color:#FFF; " onclick="'+linkPath+'">PendingApproved</a>';
+				$("#cReqShow").html(tour_combo);
 			}
+			
+			
 			else{
 				$("#cReqShow").html('<a id="blankAnc" name="blankAnc" onClick="homePage()"  ></a> ');
 			}
@@ -2826,7 +2837,7 @@ function page_pending(){
 		
 		var linkPath="window.open('"+localStorage.path_value_report+"teamShow_web?"+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"&monthPass=This', '_system');"
 	
-			var tour_combo='<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td onclick="'+linkPath+'">'+'<input type="submit"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Team    "   /></td></tr></table>';
+			var tour_combo='<img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="team-icon.png"  onclick="'+linkPath+'">';
 			$('#teamSS').empty();
 			$('#teamSS').append(tour_combo);	
 			
