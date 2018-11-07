@@ -1521,10 +1521,10 @@ function check_user() {
 	//Main
 
 	
-	var  apipath_base_photo_dm='http://127.0.0.1:8000/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	localStorage.path_value_tour='http://127.0.0.1:8000/kpl/tour_web/'
-	localStorage.path_value_report='http://127.0.0.1:8000/kpl/tour_web_members/'
-	localStorage.path_value_tour='http://127.0.0.1:8000/kpl/tour_web/'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//	localStorage.path_value_tour='http://127.0.0.1:8000/kpl/tour_web/'
+//	localStorage.path_value_report='http://127.0.0.1:8000/kpl/tour_web_members/'
+//	localStorage.path_value_tour='http://127.0.0.1:8000/kpl/tour_web/'
 	
 	
 	
@@ -1536,9 +1536,9 @@ function check_user() {
 	var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
-	localStorage.path_value_tour='http://w05.yeapps.com/kpl/tour_web/'
-	localStorage.path_value_report='http://w05.yeapps.com/kpl/tour_web_members/'
-	localStorage.path_value_tour='http://w05.yeapps.com/kpl/tour_web/'
+	//localStorage.path_value_tour='http://w05.yeapps.com/kpl/tour_web/'
+//	localStorage.path_value_report='http://w05.yeapps.com/kpl/tour_web_members/'
+	
 	
 	
 	
@@ -1599,6 +1599,10 @@ function check_user() {
 						var report_url=resultArray[3];
 						
 						var tour_url=resultArray[4];
+						var path_value_tour=resultArray[5];
+						var path_value_report=resultArray[6];
+						
+						
 						
 						
 						
@@ -1622,6 +1626,9 @@ function check_user() {
 							localStorage.photo_submit_url=photo_submit_url;
 							localStorage.report_url=report_url;
 							localStorage.tour_url=tour_url;
+							
+							localStorage.path_value_tour=path_value_tour
+							localStorage.path_value_report=path_value_report
 							//alert (localStorage.photo_submit_url)
 							
 							localStorage.cid=cid;
