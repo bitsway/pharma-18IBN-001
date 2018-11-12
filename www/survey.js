@@ -2115,9 +2115,9 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 													var prSampletList=localStorage.prSampleStr.split('<rd>');
 													var prSampleLength=prSampletList.length;
 													var product_tbl_doc_sample='';
-	
+													
 													for (j=0; j < prSampleLength; j++){
-														var sampleArray2 = productList[j].split('<fd>');
+														var sampleArray2 = prSampletList[j].split('<fd>');
 														var sample_id2=sampleArray2[0];	
 														var sample_name2=sampleArray2[1];
 														var sample_qty='';																		
@@ -2145,6 +2145,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 													localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
 													localStorage.product_tbl_str_doc_sample=product_tbl_doc_sample;
 													
+													
 												
 										$('#item_combo_id_lv').empty()
 										$('#item_combo_id_lv').append(localStorage.product_tbl_str);
@@ -2156,8 +2157,11 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 										
 										$('#campaign_combo_id_lv').empty();
 										$('#campaign_combo_id_lv').append(localStorage.product_tbl_str_doc_campaign);
+										
 										$('#sample_combo_id_lv').empty();
 										$('#sample_combo_id_lv').append(localStorage.product_tbl_str_doc_sample);
+										
+										//alert (localStorage.product_tbl_str_doc_sample)
 
 													
 													
@@ -9081,16 +9085,16 @@ function searchCampaignChar(char) {
 function searchSampleChar(char) {
 	var filter  = char;
 	var lis =document.getElementById("sample_combo_id_lv").getElementsByTagName("li");
-	//alert (filter);
+	
 	for (var i = 0; i < lis.length; i++) {
 		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-		//alert (name)
 		if (name.toUpperCase().indexOf(filter) == 0) 
 			lis[i].style.display = 'list-item';
 		else
 			lis[i].style.display = 'none';
-		//$("#item_combo_id_lv").find(lis[0]).first().focus()
+		$("#item_combo_id_lv").find(lis[0]).first().focus()
 	}
+	//alert (i)
 	$("#sample_combo_id").val('');
 	$("#sample_combo_id").focus();
 	

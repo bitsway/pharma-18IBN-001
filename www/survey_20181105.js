@@ -1533,6 +1533,8 @@ function check_user() {
 
 
     var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_live_new_tour/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+
 
 	var user_id=$("#user_id").val();
 	var user_pass=$("#user_pass").val();
@@ -2130,6 +2132,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 										
 										$('#campaign_combo_id_lv').empty();
 										$('#campaign_combo_id_lv').append(localStorage.product_tbl_str_doc_campaign);
+										
 										$('#sample_combo_id_lv').empty();
 										$('#sample_combo_id_lv').append(localStorage.product_tbl_str_doc_sample);
 
