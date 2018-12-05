@@ -4105,7 +4105,7 @@ function addMarketListCteam() {
 function marketNextLV(lvalue) {
 	$("#unschedule_market_combo_id").val(lvalue);
 	
-	
+	//alert (localStorage.doctor_flag)
 	//getLocationInfo();
 	getLocationInfo_ready()
 	//alert (localStorage.doctor_flag)
@@ -4125,6 +4125,7 @@ function marketNextLV(lvalue) {
 }
 
 function marketNext() {
+	
 	$("#unscheduled_m_client_combo_id").val('');
 	
 	market_name=$("#unschedule_market_combo_id").val();
@@ -5356,7 +5357,7 @@ function marketNext_doc() {
 				//alert (localStorage.market_doctor)
 				result=localStorage.market_doctor
 			}
-			
+			alert (result)
 			var resultArray = result.split('</'+market_Id+'>');
 			var doc_result_list=resultArray[0].split('<'+market_Id+'>')
 			var doc_result=doc_result_list[1]
