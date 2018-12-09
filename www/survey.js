@@ -1533,7 +1533,7 @@ function check_user() {
 	
 	
 	
-	//var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
@@ -1650,7 +1650,7 @@ function check_user() {
 							
 							//alert (localStorage.sync_date)
 							
-							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							//$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -2245,7 +2245,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 
 
 //													===========================ppm end===============
-
+													
 //											=================prItemStart
 														
 											localStorage.pr_A=''
@@ -2354,7 +2354,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 											var pr_Z=pr_after_Y.split('<ZEND>')[0].replace('<ZSTART>','');
 											//var productListStr_after_E=productListStr_after_D.split('</Z>')[1]
 											
-											
+											alert ('5')	
 											
 											localStorage.pr_A=pr_A
 											localStorage.pr_B=pr_B
@@ -2384,7 +2384,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 											localStorage.pr_Z=pr_Z
 
 											$("#pr_id_lv").empty()
-											
+											alert ('6')	
 											setPrProduct()
 
 
