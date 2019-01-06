@@ -377,13 +377,11 @@ function page_doc_back(){
 	}
 	else{
 		page_saved_Doc();
-		
 	}
 }
 function page_saved_Doc() {
 	localStorage.docPage=0
 	localStorage.scheduleDocFlag=1
-	localStorage.setScheduleDateDoc=0
 	var docSaveData=localStorage.docSaveData
 	//alert (docSaveData)
 	var docSaveDataList = docSaveData.split('<doc>');	
@@ -1973,7 +1971,7 @@ function check_user() {
 																todayFlag=1
 															}
 															if (docMarketID!=''){
-																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="setScheduleDateDoc(\''+docMarketDate+'\');marketNextLV(\''+docmarketNameID+'\');"><font class="name" style="font-size:18; font-weight:bold">'+docMarketName+'</a></font></li>';
+																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="setScheduleDate(\''+docMarketDate+'\');marketNextLV(\''+docmarketNameID+'\');"><font class="name" style="font-size:18; font-weight:bold">'+docMarketName+'</a></font></li>';
 															//alert (docMarketComb)	
 																}
 														}
@@ -2483,15 +2481,8 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 		
 		
 }//Function
-function setScheduleDateDoc(scheduleDate){
-	
-	localStorage.scheduled_date=scheduleDate;
-	localStorage.setScheduleDateDoc=1;
-	//alert (localStorage.scheduled_date)
-}
+
 function setScheduleDate(scheduleDate){
-	
-	localStorage.setScheduleDateDoc=0;
 	localStorage.scheduled_date=scheduleDate;
 	//alert (localStorage.scheduled_date)
 }
@@ -2634,7 +2625,7 @@ function doctor_visit_plan() {
 																todayFlag=1
 															}
 															if (docMarketID!=''){
-																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="setScheduleDateDoc(\''+docMarketDate+'\');marketNextLV(\''+docmarketNameID+'\');"><font class="name" style="font-size:18; font-weight:bold">'+docMarketName+'</a></font></li>';
+																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="setScheduleDate(\''+docMarketDate+'\');marketNextLV(\''+docmarketNameID+'\');"><font class="name" style="font-size:18; font-weight:bold">'+docMarketName+'</a></font></li>';
 															//alert (docMarketComb)	
 																}
 														}
@@ -4117,14 +4108,10 @@ function marketNextLV(lvalue) {
 	//alert (localStorage.doctor_flag)
 	//getLocationInfo();
 	getLocationInfo_ready()
-	//alert (localStorage.setScheduleDateDoc)
+	//alert (localStorage.doctor_flag)
 	if (localStorage.doctor_flag==1){
-		if (localStorage.setScheduleDateDoc==1){
-			marketNext_Doc_online();
-		}
-		else{
-			marketNext_doc();
-		}
+		
+		marketNext_doc();
 	}
 	else{
 		if (localStorage.user_type=='rep'){
@@ -14255,145 +14242,3 @@ function medClick2(pid, name){
 $('#ThumbnailTest_buttonTakePhotosNow').click(function(){
     takePicture();
 });
-
-
-//--Online Doctor Sear
-function marketNext_Doc_online() {
-	
-	
-	market_name=$("#unschedule_market_combo_id").val();
-	
-	if(market_name=='' || market_name==0){
-			$("#err_market_next").text("Market required");
-	}
-	else{
-			$("#err_market_next").text("");			
-			$("#btn_unschedule_market").hide();
-			$("#wait_image_unschedule_market").show();		
-				
-			//visitMarketStr
-			localStorage.visit_market_show=market_name
-			var market_Id=market_name.split('|')[1];
-			
-			
-			var catType=$("#catCombo").val();
-				
-				
-				//===========================Get market client list Start============================
-				
-				
-				//$("#err_market_next").html(localStorage.base_url+'getMarketClientList?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&catType='+catType);
-				//http://127.0.0.1:8000/lscmreporting/syncmobile/getClientInfo?cid=LSCRM&rep_id=1001&rep_pass=123&synccode=2568&client_id=R100008
-				
-	//			//// ajax-------
-	//alert (localStorage.base_url+'marketNext_Doc_online?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&catType='+catType+'&scheduled_date='+localStorage.scheduled_date)
-	
-	$.ajax(localStorage.base_url+'marketNext_Doc_online?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&catType='+catType+'&scheduled_date='+localStorage.scheduled_date,{
-								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
-								type: 'POST',
-								timeout: 30000,
-								error: function(xhr) {
-								//alert ('Error: ' + xhr.status + ' ' + xhr.statusText);
-								$("#btn_schedule_ret").show();
-								$("#wait_image_schedule_ret").hide();
-								$("#error_login").html('Network Timeout. Please check your Internet connection..');
-													},
-								success:function(data, status,xhr){	
-								
-								
-	//$.post(localStorage.base_url+'getMarketClientList?',{cid: localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,market_id:market_Id,catType:catType},
-    						 
-								
-							//	 function(data, status){
-									 if (status!='success'){
-										$("#err_retailer_next").html('Network Timeout. Please check your Internet connection...');
-										$("#btn_schedule_ret").show();
-										$("#wait_image_schedule_ret").hide();
-									 }
-									 else{	
-									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
-										
-										if (resultArray[0]=='FAILED'){
-											$("#err_market_next").text("Retailer not available");	
-											$("#wait_image_unschedule_market").hide();		
-											$("#btn_unschedule_market").show();
-										}
-										
-										
-										
-	
-	
-								else if (resultArray[0]=='SUCCESS'){
-									
-									localStorage.market_client=resultArray[1];
-									
-									//alert (resultArray[1])
-									
-								var	m_client_string=localStorage.market_client;
-				
-									var visit_type="Unscheduled";
-									var scheduled_date="";
-											
-						//					-----------------------------------
-														
-								var mClientList = m_client_string.split('<rd>');
-								var mClientListShowLength=mClientList.length	
-									
-								
-								var unscheduled_m_client_list=''
-								//alert (mClientListShowLength);
-								for (var i=0; i < mClientListShowLength; i++){
-										var mClientValueArray = mClientList[i].split('<fd>');
-										var mClientID=mClientValueArray[0];
-										var mClientName=mClientValueArray[1];
-										var mClientCat=mClientValueArray[2];
-										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></tr></table></li>'	
-										//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
-									}
-								
-								
-
-
-
-							
-								var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id_lv');
-								
-								unscheduled_m_client_combo_ob.empty()
-								unscheduled_m_client_combo_ob.append(unscheduled_m_client_list);
-								
-								//alert (unscheduled_m_client_list);
-								
-								//alert (unscheduled_m_client_list);
-								
-//								--------------------------
-
-
-								$(".market").html(market_name);								
-								$(".visit_type").html(visit_type);								
-								$(".s_date").html(scheduled_date);
-								
-								localStorage.visit_type=visit_type
-								localStorage.scheduled_date=scheduled_date
-								
-								//-----------------------------------
-								$("#err_market_next").text("");
-								$("#wait_image_unschedule_market").hide();		
-								$("#btn_unschedule_market").show();
-								
-								//------- 
-
-								$.afui.loadContent("#page_market_ret",true,true,'right');
-								unscheduled_m_client_combo_ob.listview("refresh");									
-								} //else if
-								
-								
-							} //else
-							
-						}
-						  
-				 });//end ajax
-			
-			
-
-		}	//Market required else		
-}
