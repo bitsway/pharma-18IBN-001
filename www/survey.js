@@ -1545,8 +1545,10 @@ function check_user() {
 	
 	
 	
-	//var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
+	//var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	//localStorage.path_value_tour='http://w05.yeapps.com/kpl/tour_web/'
@@ -2105,18 +2107,18 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 														
 														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_vat'+product_id2+'" value="'+vat+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td>&nbsp;&nbsp;</td><td  style="text-align:left; color:#306161" >'+'<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font> | '+'<font class="itemCode">'+ product_id2.toUpperCase()+' | '+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br> <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
 														//------------ Doctor Campaign Item list
-														$("#error_login").html('Processing Product List....');
+														$("#error_login").html('Processing Product List....1');
 														
 														
 														product_tbl_doc_campaign=product_tbl_doc_campaign+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="check_boxTrue(\''+product_id2+'\')"> '+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox" onClick="getDocCampaignData_keyup(\''+product_id2+'\')" name="doc_camp'+product_id2+'" value="checkbox" id="doc_camp'+product_id2+'"><label for="doc_camp'+product_id2+'"></br></label><input type="hidden" id="doc_camp_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="doc_camp_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="doc_camp_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'</br><font id="'+ product_id2 +'" onClick="tr_item_doc_campaign(\''+product_id2+'\')" class="name" >'+ product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 
-														$("#error_login").html('Processing Product List....');	
+														$("#error_login").html('Processing Product List....2');	
 														//-------------Sample----------
 														
 														product_tbl_doc_sample=product_tbl_doc_sample+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_sample(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;"><input class="docSample" maxlength="4" onChange="getSampleData_keyup(\''+product_id2+'\')" type="number" id="sample_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="sample_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="sample_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="sample_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">&nbsp;&nbsp;<font  class="name" >'+product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 
 														
-														
+													
 													
 													}
 													
