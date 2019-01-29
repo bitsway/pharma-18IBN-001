@@ -32,6 +32,14 @@ var  apipath ='http://a007.yeapps.com/acme/medSearch/'
 		//localStorage.prProdID_Str='';
 		//alert('Local : '+ localStorage.prProdID_Str);
 		
+		
+		$("#wait_image_aqua").hide();
+		$("#wait_image_cattle").hide();		
+		$("#wait_image_poultry").hide();
+		$("#wait_m_check_in").hide();
+		$("#wait_img_farm").hide();
+		
+		
 		localStorage.location_error=''
 		$("#wait_image_login").hide();
 		$('#menu_lv').empty()
@@ -14412,8 +14420,7 @@ function back_page_check_in() {
 }
 
 
-//                 Nazma Akhter 2019-01-19 start
-
+//		Nazma Azam 2019-01-28 start
 function m_check_in_Submit(){
 	
 	$("#wait_m_check_in").show();
@@ -14424,12 +14431,13 @@ function m_check_in_Submit(){
 
 
 
-	flag_lat_lon = 1
+		flag_lat_lon = 1
 	
-	if (latitude==0 && longitude==0){
+	    if (latitude==0 && longitude==0){
 		flag_lat_lon = 0
 		}
-
+		
+	
 	if(flag_lat_lon == 1){
 
 		
@@ -14463,7 +14471,7 @@ function m_check_in_Submit(){
 										
 										else if (resultArray[0]=='SUCCESS'){
 										$('#myerror_check_in').html(resultArray[1]);
-																				
+										$("#wait_m_check_in").hide();										
 									
 										}
 								
@@ -14485,7 +14493,7 @@ else{
 
 
 function e_check_in_Submit(){
-	
+	$("#wait_m_check_in").show();
 	getLocationInfo_ready()
 	
 	var latitude= localStorage.latitude
@@ -14534,7 +14542,7 @@ function e_check_in_Submit(){
 																			
 										$('#myerror_check_in').html(resultArray[1]);
 										
-										
+										$("#wait_m_check_in").hide();
 									
 										}
 								
@@ -14555,7 +14563,7 @@ else{
 }
 
 function m_check_out_Submit(){
-	
+	$("#wait_m_check_in").show();
 	getLocationInfo_ready()
 	
 	var latitude= localStorage.latitude
@@ -14600,7 +14608,7 @@ function m_check_out_Submit(){
 										else if (resultArray[0]=='SUCCESS'){
 										$("#myerror_check_in").val('');	
 										$('#myerror_check_in').html(resultArray[1]);
-										
+										$("#wait_m_check_in").hide();
 										
 									
 										}
@@ -14621,7 +14629,7 @@ else{
 }
 
 function e_check_out_Submit(){
-	
+	$("#wait_m_check_in").show();
 	getLocationInfo_ready()
 	
 	var latitude= localStorage.latitude
@@ -14666,11 +14674,10 @@ function e_check_out_Submit(){
 																			
 										$('#myerror_check_in').html(resultArray[1]);
 										
-										
+										$("#wait_m_check_in").hide();
 									
 										}
 								
-
 								
 							} //else
 							
@@ -14691,3 +14698,30 @@ else{
 
 
 //		Nazma Azam 2019-01-13 end
+
+
+
+//		Nazma Azam, Shima, Jolly 2019-01-28 start
+function page_farm_link() {	
+	$.afui.loadContent("#farm_Page",true,true,'right');
+}
+
+function poultry_next_page() {	
+	$.afui.loadContent("#poultry_page",true,true,'right');
+}
+
+
+function cattle_next_page() {	
+	$.afui.loadContent("#cattle_page",true,true,'right');
+}
+
+function aqua_next_page() {	
+	$.afui.loadContent("#aqua_page",true,true,'right');
+}
+
+
+function back_page_farm() {	
+	$.afui.loadContent("#farm_Page",true,true,'right');
+}
+
+//		Nazma Azam, Shima, Jolly 2019-01-28 end

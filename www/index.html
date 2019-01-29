@@ -221,17 +221,22 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                       
                       
                        <tr>
-                        <td align="center"  style="background-color:#09C; "><div  align="center"  style="width:100%; background-color:#09C; "><img onClick="page_check_in_link();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="BusinessVolume_1.png"> </div>
+                        <td align="center"  style="background-color:#09C; "><div  align="center"  style="width:100%; background-color:#09C; "><img onClick="page_check_in_link();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="checkin.png"> </div>
                         
                         
                         </td>
                         <td style="background-color:#09C; ">
-                       
-                        <div align="center"  style="width:100%; background-color:#09C; ">
-                     <!--  <img    hight="100px" width="100px"  src="BusinessVolume_1.png">--></div>
+                       <div id="link_button"   align="center"  style="width:100%; background-color:#09C; height:100px; color:#FFF; font-size:14px " ><img onClick="page_farm_link();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="farm.png"></div>
+                      <!--  <div align="center"  style="width:100%; background-color:#09C; ">
+                       <img    hight="100px" width="100px"  src="BusinessVolume_1.png"></div>-->
                         
                        </td>
                       </tr>
+                      
+                      
+                      
+                      
+                      
                       </div>
                       
                       
@@ -5961,7 +5966,627 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 
 
+<!--=====================================Farm-->
+				<!--Nazma Azam, Shima, Jolly 2019-01-28 start-->
 
+<!--=========================Farm page=====================-->
+
+      <div class="view" id="farm_PageView">
+        <div class="pages">
+         <header style="height:50px">
+        
+         </br>
+        <table width="100%" border="0">
+        <tr>
+        <td width="100%" align="center">
+         FARM PAGE
+        
+        
+        	</td>
+        
+        </tr>
+        </table>
+         
+         </header> 
+            <div class="panel" id="farm_Page" style="background-color:#EDFEED">
+            </br></br></br></br></br>
+         					
+                            
+                            <div id="myerror_farm" style="color:#C00"></div> 
+                            <div class="input_farm">
+                        
+                        <table width="100%" border="0" cellspacing="0"  id="tbl_farm"  style="border-color:#999;background-color:#EDFEED" >
+                        
+                        
+                        <tr>
+                        <td><input type="submit" id="btn_Poultry_submit" onClick="poultry_next_page();"  style="width:100%; height:80px; background-color:#09C; color:#FFF; font-size:20px" value="    Poultry     "   /></td>
+                         </tr>
+                         <tr>
+                        <td><input type="submit" id="btn_Cattle_submit" onClick="cattle_next_page();"  style="width:100%; height:80px; background-color:#09C; color:#FFF; font-size:20px" value="    Cattle     "   /></td>
+                         </tr>
+                         <tr>
+                        <td><input type="submit" id="btn_Aqua_submit" onClick="aqua_next_page();"  style="width:100%; height:80px; background-color:#09C; color:#FFF; font-size:20px" value="    Aqua     "   /></td>
+                       
+                        </tr>
+ 
+               			 </table>
+                         </br></br>
+                           
+                        <div   align="center">
+                        <img id="wait_img_farm" style="width:50px" src="loading.gif" alt="">	
+                        </div>
+  
+                            
+                 </div>
+                   </div> 
+                   
+                                        
+
+            </div>
+       
+        <footer>
+        
+        
+		  <a onClick="homePage()" class="icon home" >Home</a>
+          
+           </footer>
+
+    </div>    
+    
+
+ 
+ 
+ 
+ 
+ 
+ 
+ <!--Poultry START -->
+
+
+<div class="view" id="poultryView">
+    <div class="pages">
+    <header>
+        <h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Poultry</h1>
+        <img src="icon-arrow-bak.png" width="30" height="30" alt="Back" onClick="back_page_farm()">
+    </header> 
+
+    <div class="panel" id="poultry_page" style="background-color:#EDFEED">
+    </br></br></br></br>            
+        <div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td >
+                        <img src="camera.png" width="70" height="70" alt="TakePic" onClick="getchAddImage()"></td>
+                    <td>
+                        <img src="images.png" width="100" height="100" alt="Image" id="myImagechAdd">
+                        <input name="chAddPhoto" id="chAddPhoto" type="hidden" value="" >
+                    </td>
+                
+                </tr>
+                    </table>
+                    </br>
+                <table width="100%" border="0">
+                  <tr>
+                    <td>Name Of Farm </td>
+                    <td>:</td>
+                    <td>
+                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Name of Owner</td>
+                    <td>:</td>
+                    <td>
+                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                   <td>Address </td>
+                    <td>:</td>
+                    <td>
+                       <textarea name="Aaddress" id="Aaddress"></textarea>
+
+                    	
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>DOB </td>
+                     <td>:</td>
+                    <td><input type="date" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Anniversary </td>
+                     <td>:</td>
+                    <td><input type="date" name="anniversary"  maxlength="50"  id="anniversary" placeholder="DOB"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Chemist/Trader for Medicine </td>
+                    <td>:</td>
+                    <td><input type="text" name="chemist_medicine"   id="chemist_medicine" placeholder="RegistrationNo"  ></td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Name of Farm Manager</td>
+                     <td>:</td>
+                    <td><input type="text" name="manager"   id="manager" placeholder="Contact Name"  ></td>
+                  </tr>
+
+                  <tr>
+                    <td>Name of Farm Consultant </td>
+                    <td>:</td>
+                    <td><input type="text" name="consultant"   id="consultant" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Category </td>
+                     <td>:</td>
+                    <td>
+                        <select name="addCCategory" id="addCCategory" >
+                                 <option>Layer</option>             
+                                 <option>Broiler</option>             
+                                 <option>Sonali</option>             
+                                 <option>Cock</option>             
+                                 <option>Sonali Breeder</option>             
+                                 <option>Layer Breeder</option>             
+                                 <option>Broiler Breeder</option>             
+                                 <option>Grand Parent</option>             
+                                 <option>Duck</option>             
+                                 <option>Turkey</option>          
+                                 <option>Guinea Fowl</option>             
+                        </select>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>No. of birds / Animals </td>
+                    <td>:</td>
+                    <td><input type="number" name="birds_animal"   id="birds_animal" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Rearing / Housing </td>
+                     <td>:</td>
+                    <td>
+                        <select name="rearing" id="rearing" >
+                                 <option>Cage</option>             
+                                 <option>Deep Litter</option>             
+                                 <option>Slat</option>
+                                            
+                        </select>
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Feeding</td>
+                     <td>:</td>
+                    <td>
+                        <select name="feeding" id="feeding" >
+                                 <option>Ready feed</option>             
+                                 <option>Own made feed</option> 
+                        </select>
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Watering</td>
+                     <td>:</td>
+                    <td>
+                        <select name="watering" id="watering" >
+                                 <option>Nipple</option>             
+                                 <option>Channel</option>       
+                                 <option>Bucket</option> 
+                        </select>
+                    </td>
+                  </tr>
+                  </tr>
+                   
+                  <tr>
+                    <td>Brooding</td>
+                     <td>:</td>
+                    <td>
+                        <select name="brooding" id="brooding" >
+                                  <option>Cage</option>             
+                                 <option>Deep Litter</option>    
+                        </select>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>Size of Ponds in bigha </td>
+                    <td>:</td>
+                    <td><input type="number" name="addCPhone"   id="addCPhone" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+                 
+ 
+                </table>
+                
+				<img id="wait_image_poultry" style="width:50px" src="loading.gif" alt="">		
+                <div id="error_chemist_add_page" style="color:#C00"></div>	
+                <div id="chemistSubmit" style="color:#C00">
+                	
+                <input type="submit" id="chSButton" name="chSButton"  onClick="poultry_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
+                	</div>
+
+				<br><br><br>
+				 
+       </div>
+    </div>
+
+<footer>
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()"  ></a>
+ </footer>
+
+</div>  
+
+
+<!--Poultry END -->
+ 
+
+
+
+
+<!--Cattle START -->
+
+
+<div class="view" id="cattleView">
+    <div class="pages">
+    <header>
+        <h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Cattle</h1>
+        <img src="icon-arrow-bak.png" width="30" height="30" alt="Back" onClick="back_page_farm()">
+    </header> 
+
+    <div class="panel" id="cattle_page" style="background-color:#EDFEED">
+    </br></br></br></br>            
+        <div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td >
+                        <img src="camera.png" width="70" height="70" alt="TakePic" onClick="getchAddImage()"></td>
+                    <td>
+                        <img src="images.png" width="100" height="100" alt="Image" id="myImagechAdd">
+                        <input name="chAddPhoto" id="chAddPhoto" type="hidden" value="" >
+                    </td>
+                
+                </tr>
+                    </table>
+                    </br>
+                <table width="100%" border="0">
+                  <tr>
+                    <td>Name Of Farm </td>
+                    <td>:</td>
+                    <td>
+                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Name of Owner</td>
+                    <td>:</td>
+                    <td>
+                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                   <td>Address </td>
+                    <td>:</td>
+                    <td>
+                        <textarea name="Aaddress" id="Aaddress"></textarea>
+
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>DOB </td>
+                     <td>:</td>
+                    <td><input type="date" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Anniversary </td>
+                     <td>:</td>
+                    <td><input type="date" name="anniversary"  maxlength="50"  id="anniversary" placeholder="DOB"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Chemist/Trader for Medicine </td>
+                    <td>:</td>
+                    <td><input type="text" name="chemist_medicine"   id="chemist_medicine" placeholder="RegistrationNo"  ></td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Name of Farm Manager</td>
+                     <td>:</td>
+                    <td><input type="text" name="manager"   id="manager" placeholder="Contact Name"  ></td>
+                  </tr>
+
+                  <tr>
+                    <td>Name of Farm Consultant </td>
+                    <td>:</td>
+                    <td><input type="text" name="consultant"   id="consultant" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Category </td>
+                     <td>:</td>
+                    <td>
+                        <select name="addCCategory" id="addCCategory" >
+                           <option>Fattening</option>             
+                           <option>Dairy</option>              
+                        </select>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>No. of birds / Animals </td>
+                    <td>:</td>
+                    <td><input type="number" name="birds_animal"   id="birds_animal" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Rearing / Housing </td>
+                     <td>:</td>
+                    <td>
+                        <select name="rearing" id="rearing" >
+                                 <option>Kuccha</option>                  
+                                 <option>Pukka</option>
+                                            
+                        </select>
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Feeding</td>
+                     <td>:</td>
+                    <td>
+                        <select name="feeding" id="feeding" >
+                                 <option>Ready feed</option>             
+                                 <option>Own made feed</option> 
+                        </select>
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Watering</td>
+                     <td>:</td>
+                    <td>
+                        <select name="watering" id="watering" >
+                          <option>Nipple</option>             
+                          <option>Channel</option>       
+                          <option>Bucket</option> 
+                        </select>
+                    </td>
+                  </tr>
+                  </tr>
+                   
+                  <tr>
+                    <td>Brooding</td>
+                     <td>:</td>
+                    <td>
+                        <select name="brooding" id="brooding" >
+                            <option>Cage</option>             
+                            <option>Deep Litter</option>    
+                        </select>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>Size of Ponds in bigha </td>
+                    <td>:</td>
+                    <td><input type="number" name="addCPhone"   id="addCPhone" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+                 
+ 
+                </table>
+                
+        <img id="wait_image_cattle" style="width:50px" src="loading.gif" alt="">   
+                <div id="error_chemist_add_page" style="color:#C00"></div>  
+                <div id="chemistSubmit" style="color:#C00">
+                  
+                <input type="submit" id="chSButton" name="chSButton"  onClick="cattle_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
+                  </div>
+
+        <br><br><br>
+         
+       </div>
+    </div>
+
+<footer>
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()"  ></a>
+ </footer>
+
+</div>  
+
+
+<!--Cattle END -->
+ 
+ 
+
+<!--Aqua START -->
+
+
+<div class="view" id="aquaView">
+    <div class="pages">
+    <header>
+        <h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Aqua</h1>
+        <img src="icon-arrow-bak.png" width="30" height="30" alt="Back" onClick="back_page_farm()">
+    </header> 
+
+    <div class="panel" id="aqua_page" style="background-color:#EDFEED">
+    </br></br></br></br>            
+        <div><b></b><span class="market" style="font-size:16px; color:#009191"></span></div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td >
+                        <img src="camera.png" width="70" height="70" alt="TakePic" onClick="getchAddImage()"></td>
+                    <td>
+                        <img src="images.png" width="100" height="100" alt="Image" id="myImagechAdd">
+                        <input name="chAddPhoto" id="chAddPhoto" type="hidden" value="" >
+                    </td>
+                
+                </tr>
+                    </table>
+                    </br>
+                <table width="100%" border="0">
+                  <tr>
+                    <td>Name Of Farm </td>
+                    <td>:</td>
+                    <td>
+                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Name of Owner</td>
+                    <td>:</td>
+                    <td>
+                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                  </tr>
+                  <tr>
+                   <td>Address </td>
+                    <td>:</td>
+                    <td>
+                    <textarea name="Aaddress" id="Aaddress"></textarea>
+                        
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>DOB </td>
+                     <td>:</td>
+                    <td><input type="date" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Anniversary </td>
+                     <td>:</td>
+                    <td><input type="date" name="anniversary"  maxlength="50"  id="anniversary" placeholder="DOB"  ></td>
+                  </tr>
+                  <tr>
+                    <td>Chemist/Trader for Medicine </td>
+                    <td>:</td>
+                    <td><input type="text" name="chemist_medicine"   id="chemist_medicine" placeholder="RegistrationNo"  ></td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Name of Farm Manager</td>
+                     <td>:</td>
+                    <td><input type="text" name="manager"   id="manager" placeholder="Contact Name"  ></td>
+                  </tr>
+
+                  <tr>
+                    <td>Name of Farm Consultant </td>
+                    <td>:</td>
+                    <td><input type="text" name="consultant"   id="consultant" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Category </td>
+                     <td>:</td>
+                    <td>
+                        <select name="addCCategory" id="addCCategory" >
+                                 <option>Finfish</option>             
+                                 <option>Shrimp brackish water</option>             
+                                 <option>Shrimp fresh water</option>             
+                                 <option>Other species</option>             
+                        </select>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>No. of birds / Animals </td>
+                    <td>:</td>
+                    <td><input type="number" name="birds_animal"   id="birds_animal" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Rearing / Housing </td>
+                     <td>:</td>
+                    <td>
+                        <select name="rearing" id="rearing" >
+                                 <option>Cage</option>             
+                                 <option>Deep Litter</option>             
+                                 <option>Slat</option>
+                                            
+                        </select>
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Feeding</td>
+                     <td>:</td>
+                    <td>
+                        <select name="feeding" id="feeding" >
+                                 <option>Ready feed</option>             
+                                 <option>Own made feed</option> 
+                        </select>
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <td>Watering</td>
+                     <td>:</td>
+                    <td>
+                        <select name="watering" id="watering" >
+                                 <option>Nipple</option>             
+                                 <option>Channel</option>       
+                                 <option>Bucket</option> 
+                        </select>
+                    </td>
+                  </tr>
+                  </tr>
+                   
+                  <tr>
+                    <td>Brooding</td>
+                     <td>:</td>
+                    <td>
+                        <select name="brooding" id="brooding" >
+                                  <option>Cage</option>             
+                                 <option>Deep Litter</option>    
+                        </select>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>Size of Ponds in bigha </td>
+                    <td>:</td>
+                    <td><input type="number" name="addCPhone"   id="addCPhone" placeholder="Contact/phone"  >
+                    </td>
+                  </tr>
+                 
+ 
+                </table>
+                
+        <img id="wait_image_aqua" style="width:50px" src="loading.gif" alt="">   
+                <div id="error_chemist_add_page" style="color:#C00"></div>  
+                <div id="chemistSubmit" style="color:#C00">
+                  
+                <input type="submit" id="chSButton" name="chSButton"  onClick="aqua_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
+                  </div>
+
+        <br><br><br>
+         
+       </div>
+    </div>
+
+<footer>
+<a onClick="homePage()" class="icon home" ></a>
+<a onClick="homePage()"  ></a>
+ </footer>
+
+</div>  
+
+
+<!-- END -->
+ 
+ 
+ 
+ 				<!--Nazma Azam, Shima, Jolly 2019-01-28 end-->
 
  <script type="text/javascript" src="phonegap.js"></script>
 
