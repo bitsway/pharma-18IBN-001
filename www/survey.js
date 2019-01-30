@@ -14728,3 +14728,79 @@ function back_page_farm() {
 }
 
 //		Nazma Azam, Shima, Jolly 2019-01-28 end
+
+
+function poultryImage() {
+	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
+		//destinationType: Camera.DestinationType.FILE_URI });
+   navigator.camera.getPicture(onSuccess_poultryImage, onFail_poultryImage, { quality: 90,
+		targetWidth: 400,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+		
+}
+function onSuccess_poultryImage(imageURI) {
+	//alert ('Success')
+    var image = document.getElementById('myImagepoultry');
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#poultryPhoto").val(imagePath);
+	
+
+		
+}
+function onFail_poultryImage(message) {
+	//alert ('Fail')
+	imagePath="";
+    alert('Failed because: ' + message);
+}
+
+//====
+function cattleImage() {
+	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
+		//destinationType: Camera.DestinationType.FILE_URI });
+   navigator.camera.getPicture(onSuccess_cattleImage, onFail_cattleImage, { quality: 90,
+		targetWidth: 400,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+		
+}
+function onSuccess_cattleImage(imageURI) {
+	//alert ('Success')
+    var image = document.getElementById('myImagecattle');
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#cattlePhoto").val(imagePath);
+	
+
+		
+}
+function onFail_cattleImage(message) {
+	//alert ('Fail')
+	imagePath="";
+    alert('Failed because: ' + message);
+}
+//===
+
+//====
+function cattleImage() {
+	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
+		//destinationType: Camera.DestinationType.FILE_URI });
+   navigator.camera.getPicture(onSuccess_aquaImage, onFail_aquaImage, { quality: 90,
+		targetWidth: 400,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+		
+}
+function onSuccess_aquaImage(imageURI) {
+	//alert ('Success')
+    var image = document.getElementById('myImageaqua');
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#aquaPhoto").val(imagePath);
+	
+
+		
+}
+function onFail_aquaImage(message) {
+	//alert ('Fail')
+	imagePath="";
+    alert('Failed because: ' + message);
+}
