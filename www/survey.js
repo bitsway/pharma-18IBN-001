@@ -1547,8 +1547,8 @@ function check_user() {
 	
 	//var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
-	//var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//	var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	//localStorage.path_value_tour='http://w05.yeapps.com/kpl/tour_web/'
@@ -14739,7 +14739,7 @@ function poultryImage() {
 		
 }
 function onSuccess_poultryImage(imageURI) {
-	alert ('Success')
+	//alert ('Success')
     var image = document.getElementById('myImagepoultry');
     image.src = imageURI;
 	imagePath = imageURI;
@@ -14749,7 +14749,7 @@ function onSuccess_poultryImage(imageURI) {
 		
 }
 function onFail_poultryImage(message) {
-	alert ('Fail')
+	//alert ('Fail')
 	imagePath="";
     alert('Failed because: ' + message);
 }
@@ -14804,3 +14804,338 @@ function onFail_aquaImage(message) {
 	imagePath="";
     alert('Failed because: ' + message);
 }
+
+//=========Insert farm
+function poultry_submit() {
+	$("#error_poultry_add_page").html('' )
+	$("#wait_image_poultry").show();
+//	var market_Id=localStorage.visit_market_show.split('|')[1];
+//	var visitDocId=localStorage.visit_client.split('|')[1]	
+	
+	addPName=$("#addPName").val()
+	addPOName=$("#addPOName").val()
+	AddressP=$("#AddressP").val()
+	addCDOBp=$("#addCDOBp").val()
+	anniversaryP=$("#anniversaryP").val()
+	chemist_medicine_p=$("#chemist_medicine_p").val()
+	managerP=$("#managerP").val()
+	consultantP=$("#consultantP").val()
+	addCCategoryP=$("#addCCategoryP").val();
+	birds_animal_p=$("#birds_animal_p").val()
+	rearingP=$("#rearingP").val()
+	
+	feedingP=$("#feedingP").val()
+	wateringP=$("#wateringP").val()
+	broodingP=$("#broodingP").val()
+	addPondsP=$("#addPondsP").val();
+	
+	
+	getLocationInfo_ready()
+	
+	var latitude= localStorage.latitude
+	var  longitude=localStorage.longitude
+	
+		flag_lat_lon = 1
+	
+	    if (latitude==0 && longitude==0){
+		flag_lat_lon = 0
+		}
+		
+	flag_lat_lon=1
+	if(flag_lat_lon == 1){
+	//alert(localStorage.base_url+'poultry_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addPName='+addPName+'&addPOName='+addPOName+'&AddressP='+AddressP+'&addCDOBp='+addCDOBp+'&anniversaryP='+anniversaryP+'&chemist_medicine_p='+chemist_medicine_p+'&managerP='+managerP+'&consultantP='+consultantP+'&addCCategoryP='+addCCategoryP+'&birds_animal_p='+birds_animal_p+'&rearingP='+rearingP+'&feedingP='+feedingP+'&wateringP='+wateringP+'&broodingP='+broodingP+'&addPondsP='+addPondsP+'&latitude='+latitude+'&longitude='+longitude)
+//	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
+		$.ajax(localStorage.base_url+'poultry_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addPName='+addPName+'&addPOName='+addPOName+'&AddressP='+AddressP+'&addCDOBp='+addCDOBp+'&anniversaryP='+anniversaryP+'&chemist_medicine_p='+chemist_medicine_p+'&managerP='+managerP+'&consultantP='+consultantP+'&addCCategoryP='+addCCategoryP+'&birds_animal_p='+birds_animal_p+'&rearingP='+rearingP+'&feedingP='+feedingP+'&wateringP='+wateringP+'&broodingP='+broodingP+'&addPondsP='+addPondsP+'&latitude='+latitude+'&longitude='+longitude,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_poultry").hide();
+								 $("#error_poultry_add_page").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_poultry").hide();
+									 if (status!='success'){
+										$("#error_poultry_add_page").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#error_poultry_add_page").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									
+									$("#error_poultry_add_page").html(result_string)
+									
+								
+							}else{	
+								 $("#wait_image_poultry").hide();
+								 $("#error_poultry_add_page").html('Network Timeout. Please check your Internet connection..');
+								}
+						}
+					  }
+			 });//end ajax
+	}
+	
+	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
+	
+}
+
+
+
+
+//				Nazma Azam 2019-01-29 Poultry Insert End
+
+
+function cattle_submit(){
+  
+  $("#wait_image_cattle").show(); 
+
+  $("#error_cattle_page").html('' ); 
+
+  var farm_name=$("#farm_name").val();
+  var owner_name=$("#owner_name").val();
+  var address=$("#address").val();
+  var add_dob=$("#add_dob").val();
+  var anniversary=$("#add_anniversary").val();
+  //alert(anniversary)
+  var chemist_medicine=$("#che_medicine").val();
+  
+  var farm_manager=$("#farm_manager").val();
+  
+  var farm_consultant=$("#farm_consultant").val();
+
+  var addCCategory=$("#catCategory").val();
+
+  var birds_animal=$("#catbirds_animal").val();
+
+  var rearing=$("#cat_rearing").val();
+  var feeding=$("#cat_feeding").val();
+  var watering=$("#cat_watering").val();
+  var brooding=$("#cat_brooding").val();
+  var ponds_bigha=$("#cat_ponds_bigha").val();
+
+  var imageText="chAddPhoto"
+  var chPhoto=$("#"+imageText).val();
+  var now = $.now();
+  var imageName='ch_'+localStorage.user_id+now.toString()+'.jpg'; 
+  if (chPhoto==''){imageName=''}
+
+  latitude=localStorage.latitude
+  longitude=localStorage.longitude
+
+  //alert(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha,+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
+  //alert(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha)
+
+	getLocationInfo_ready()
+	
+	var latitude= localStorage.latitude
+	var  longitude=localStorage.longitude
+	
+		flag_lat_lon = 1
+	
+	    if (latitude==0 && longitude==0){
+		flag_lat_lon = 0
+		}
+		
+	flag_lat_lon=1
+	if(flag_lat_lon == 1){
+//	alert(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha)
+  $.ajax(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha,{
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_cattle").hide();
+								 $("#error_cattle_page").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_cattle").hide();
+									 if (status!='success'){
+										$("#error_cattle_page").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#error_cattle_page").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									
+									$("#error_cattle_page").html(result_string)
+									
+								
+							}else{	
+								 $("#wait_image_cattle").hide();
+								 $("#error_cattle_page").html('Network Timeout. Please check your Internet connection..');
+								}
+						}
+					  }
+
+  }); 
+	}
+}
+
+
+
+
+function aqua_submit() {
+
+//alert('ok')
+	$("#error_aqua_page").html('' )
+	$("#wait_image_aqua").show();
+//	var market_Id=localStorage.visit_market_show.split('|')[1];
+//	var visitDocId=localStorage.visit_client.split('|')[1]	
+	
+	addCNameA=$("#addCNameA").val()
+	addAOName=$("#addAOName").val()
+	
+	addressAq=$("#addressAq").val()
+	// alert(addressAq)
+	addCDOBa=$("#addCDOBa").val()
+	anniversaryA=$("#anniversaryA").val()
+	chemist_medicine_a=$("#chemist_medicine_a").val()
+	managerA=$("#managerA").val()
+	consultantA=$("#consultantA").val()
+	addCCategoryA=$("#addCCategoryA").val()
+	birds_animal_a=$("#birds_animal_a").val()
+	rearingA=$("#rearingA").val()
+	// alert(rearingP)
+	feedingA=$("#feedingA").val()
+	wateringA=$("#wateringA").val()
+	broodingA=$("#broodingA").val()
+	addCPhoneA=$("#addCPhoneA").val()
+	
+	// getLocationInfo_ready()
+	
+	var latitude= localStorage.latitude
+	var  longitude=localStorage.longitude
+	
+		flag_lat_lon = 1
+	
+	    if (latitude==0 && longitude==0){
+		flag_lat_lon = 0
+		}
+		
+	flag_lat_lon=1
+	if(flag_lat_lon == 1){
+	//alert(localStorage.base_url+'aqua_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addCNameA='+addCNameA+'&addAOName='+addAOName+'&addressAq='+addressAq+'&addCDOBa='+addCDOBa+'&anniversaryA='+anniversaryA+'&chemist_medicine_a='+chemist_medicine_a+'&managerA='+managerA+'&consultantA='+consultantA+'&addCCategoryA='+addCCategoryA+'&birds_animal_a='+birds_animal_a+'&rearingA='+rearingA+'&feedingA='+feedingA+'&wateringA='+wateringA+'&broodingA='+broodingA+'&addCPhoneA='+addCPhoneA+'&latitude='+latitude+'&longitude='+longitude)
+//	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
+		$.ajax(localStorage.base_url+'aqua_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addCNameA='+addCNameA+'&addAOName='+addAOName+'&addressAq='+addressAq+'&addCDOBa='+addCDOBa+'&anniversaryA='+anniversaryA+'&chemist_medicine_a='+chemist_medicine_a+'&managerA='+managerA+'&consultantA='+consultantA+'&addCCategoryA='+addCCategoryA+'&birds_animal_a='+birds_animal_a+'&rearingA='+rearingA+'&feedingA='+feedingA+'&wateringA='+wateringA+'&broodingA='+broodingA+'&addCPhoneA='+addCPhoneA+'&latitude='+latitude+'&longitude='+longitude,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_aqua").hide();
+								 $("#error_aqua_page").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_aqua").hide();
+									 if (status!='success'){
+										$("#error_aqua_page").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#error_aqua_page").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+									var result_string=resultArray[1];
+									
+									$("#error_aqua_page").html(result_string)
+									
+								
+							}else{	
+								 $("#wait_image_aqua").hide();
+								 $("#error_aqua_page").html('Network Timeout. Please check your Internet connection..');
+								}
+						}
+					  }
+			 });//end ajax
+	}
+	
+	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
+	
+}
+
+
+function farmList_page(){
+	//alert (localStorage.base_url+'farmListData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	$("#wait_image_farmlist").show();
+	$.ajax(localStorage.base_url+'farmListData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_farmlist").hide();
+								 $("#err_farmlist").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									//alert (data)
+									 $("#wait_image_farmlist").hide();
+									 if (status!='success'){
+										$("#err_farmlist").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+								if (resultArray[0]=='FAILED'){
+											$("#err_farmlist").text(resultArray[1]);	
+											
+										}
+								else if (resultArray[0]=='SUCCESS'){	
+								
+								//		========================
+										var result_string=resultArray[1];
+										
+										localStorage.farmList=result_string
+										var FarmList = result_string.split('<rd>');
+										var FarmListLength=FarmList.length	
+											
+										
+										var farmShow_list=''
+										
+										for (var i=0; i < FarmListLength; i++){
+												var farmListArray = FarmList[i].split('<fd>');
+												
+												var farmID=farmListArray[0];
+												var farm_name=farmListArray[1];
+												
+												farmShow_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_farm_profile(\''+farm_name+'|'+farmID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="farmVist(\''+farm_name+'|'+farmID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+farm_name+'| </font>'+farmID+'</font></a></td></tr></table></li>'	
+												
+											}
+										
+										
+
+
+
+									
+										var farm_combo_ob=$('#farmlist_combo_id_lv');
+										
+										farm_combo_ob.empty()
+										farm_combo_ob.append(farmShow_list);
+									//	=============================
+									
+									
+									
+								
+							}else{	
+								 $("#wait_image_farmlist").hide();
+								 $("#err_farmlist").html('Network Timeout. Please check your Internet connection..');
+								}
+						}
+					  }
+			 });//end ajax
+	$.afui.loadContent("#page_farmlist",true,true,'right');
+}
+

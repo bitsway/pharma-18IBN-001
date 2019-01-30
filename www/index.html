@@ -6008,6 +6008,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                         <td><input type="submit" id="btn_Aqua_submit" onClick="aqua_next_page();"  style="width:100%; height:80px; background-color:#09C; color:#FFF; font-size:20px" value="    Aqua     "   /></td>
                        
                         </tr>
+                        
+                        
+                        
+                        <tr>
+                        <td>
+                        
+                        <br><br>
+                        <input type="submit"  onClick="farmList_page();"  style="width:100%; height:80px; background-color:#009; color:#FFF; font-size:20px" value="    Farm List     "   /></td>
+                       
+                        </tr>
  
                			 </table>
                          </br></br>
@@ -6070,49 +6080,49 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Name Of Farm </td>
                     <td>:</td>
                     <td>
-                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                    <input type="text" name="addPName"   id="addPName" placeholder="Name"  ></td>
                   </tr>
                   <tr>
                     <td>Name of Owner</td>
                     <td>:</td>
                     <td>
-                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                    <input type="text" name="addPOName"   id="addPOName" placeholder="Owner Name"  ></td>
                   </tr>
                   <tr>
                    <td>Address </td>
                     <td>:</td>
                     <td>
-                       <textarea name="Aaddress" id="Aaddress"></textarea>
-
+                       
+						<textarea name="AddressP"   id="AddressP"></textarea>
                     	
                     </td>
                   </tr>
                   <tr>
                     <td>DOB </td>
                      <td>:</td>
-                    <td><input type="date" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ></td>
+                    <td><input type="date" name="addCDOBp"  maxlength="50"  id="addCDOBp" placeholder="DOB"  ></td>
                   </tr>
                   <tr>
                     <td>Anniversary </td>
                      <td>:</td>
-                    <td><input type="date" name="anniversary"  maxlength="50"  id="anniversary" placeholder="DOB"  ></td>
+                    <td><input type="date" name="anniversaryP"  maxlength="50"  id="anniversaryP" placeholder="Anniversary"  ></td>
                   </tr>
                   <tr>
                     <td>Chemist/Trader for Medicine </td>
                     <td>:</td>
-                    <td><input type="text" name="chemist_medicine"   id="chemist_medicine" placeholder="RegistrationNo"  ></td>
+                    <td><input type="text" name="chemist_medicine_p"   id="chemist_medicine_p" placeholder="Chemist/Trader for Medicine"  ></td>
                   </tr>
                   
                   <tr>
                     <td>Name of Farm Manager</td>
                      <td>:</td>
-                    <td><input type="text" name="manager"   id="manager" placeholder="Contact Name"  ></td>
+                    <td><input type="text" name="managerP"   id="managerP" placeholder="Name of Farm Manager"  ></td>
                   </tr>
 
                   <tr>
                     <td>Name of Farm Consultant </td>
                     <td>:</td>
-                    <td><input type="text" name="consultant"   id="consultant" placeholder="Contact/phone"  >
+                    <td><input type="text" name="consultantP"   id="consultantP" placeholder="Name of Farm Consultant"  >
                     </td>
                   </tr>
 
@@ -6120,18 +6130,19 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Category </td>
                      <td>:</td>
                     <td>
-                        <select name="addCCategory" id="addCCategory" >
-                                 <option>Layer</option>             
-                                 <option>Broiler</option>             
-                                 <option>Sonali</option>             
-                                 <option>Cock</option>             
-                                 <option>Sonali Breeder</option>             
-                                 <option>Layer Breeder</option>             
-                                 <option>Broiler Breeder</option>             
-                                 <option>Grand Parent</option>             
-                                 <option>Duck</option>             
-                                 <option>Turkey</option>          
-                                 <option>Guinea Fowl</option>             
+                        <select name="addCCategoryP" id="addCCategoryP" >
+                        		 <option >Select Category</option> 
+                                 <option value="Layer">Layer</option>             
+                                 <option value="Broiler">Broiler</option>             
+                                 <option value="Sonali">Sonali</option>             
+                                 <option value="Cock">Cock</option>             
+                                 <option value="Sonali Breeder">Sonali Breeder</option>             
+                                 <option value="Layer Breeder">Layer Breeder</option>             
+                                 <option value="Broiler Breeder">Broiler Breeder</option>             
+                                 <option value="Grand Parent">Grand Parent</option>             
+                                 <option value="Duck">Duck</option>             
+                                 <option value="Turkey">Turkey</option>          
+                                 <option value="Guinea Fowl">Guinea Fowl</option>             
                         </select>
                     </td>
                   </tr>
@@ -6140,7 +6151,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   <tr>
                     <td>No. of birds / Animals </td>
                     <td>:</td>
-                    <td><input type="number" name="birds_animal"   id="birds_animal" placeholder="Contact/phone"  >
+                    <td><input type="number" name="birds_animal_p"   id="birds_animal_p" placeholder="No. of birds / Animals"  >
                     </td>
                   </tr>
                    
@@ -6148,10 +6159,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Rearing / Housing </td>
                      <td>:</td>
                     <td>
-                        <select name="rearing" id="rearing" >
-                                 <option>Cage</option>             
-                                 <option>Deep Litter</option>             
-                                 <option>Slat</option>
+                        <select name="rearingP" id="rearingP" >
+                        		 <option >Select Rearing / Housing</option> 
+                                 <option value="Cage">Cage</option>             
+                                 <option value="Deep Litter">Deep Litter</option>             
+                                 <option value="Slat">Slat</option>
                                             
                         </select>
                     </td>
@@ -6161,9 +6173,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Feeding</td>
                      <td>:</td>
                     <td>
-                        <select name="feeding" id="feeding" >
-                                 <option>Ready feed</option>             
-                                 <option>Own made feed</option> 
+                        <select name="feedingP" id="feedingP" >
+                        		 <option >Select Feeding</option> 
+                                 <option value="Ready feed">Ready feed</option>             
+                                 <option value="Own made feed">Own made feed</option> 
                         </select>
                     </td>
                   </tr>
@@ -6172,10 +6185,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Watering</td>
                      <td>:</td>
                     <td>
-                        <select name="watering" id="watering" >
-                                 <option>Nipple</option>             
-                                 <option>Channel</option>       
-                                 <option>Bucket</option> 
+                        <select name="wateringP" id="wateringP" >
+                        		 <option >Select Watering</option>  
+                                 <option value="Nipple">Nipple</option>             
+                                 <option value="Channel">Channel</option>       
+                                 <option value="Bucket">Bucket</option> 
                         </select>
                     </td>
                   </tr>
@@ -6185,26 +6199,27 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Brooding</td>
                      <td>:</td>
                     <td>
-                        <select name="brooding" id="brooding" >
-                                  <option>Cage</option>             
-                                 <option>Deep Litter</option>    
+                        <select name="broodingP" id="broodingP" >
+                        		<option >Select Brooding</option>  
+                                  <option value="Cage">Cage</option>             
+                                 <option value="Deep Litter">Deep Litter</option>    
                         </select>
                     </td>
                   </tr>
 
 
-                  <tr>
+                <!--  <tr>
                     <td>Size of Ponds in bigha </td>
                     <td>:</td>
-                    <td><input type="number" name="addCPhone"   id="addCPhone" placeholder="Contact/phone"  >
-                    </td>
-                  </tr>
+                    <td>--><input type="hidden" name="addPondsP"   id="addPondsP" placeholder="Size of Ponds in bigha "  >
+                   <!-- </td>
+                  </tr>-->
                  
  
                 </table>
                 
 				<img id="wait_image_poultry" style="width:50px" src="loading.gif" alt="">		
-                <div id="error_chemist_add_page" style="color:#C00"></div>	
+                <div id="error_poultry_add_page" style="color:#C00"></div>	
                 <div id="chemistSubmit" style="color:#C00">
                 	
                 <input type="submit" id="chSButton" name="chSButton"  onClick="poultry_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
@@ -6259,49 +6274,47 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Name Of Farm </td>
                     <td>:</td>
                     <td>
-                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                    <input type="text" name="farm_name"   id="farm_name" placeholder="Name"  ></td>
                   </tr>
                   <tr>
                     <td>Name of Owner</td>
                     <td>:</td>
                     <td>
-                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                    <input type="text" name="owner_name"   id="owner_name" placeholder="Owner Name"  ></td>
                   </tr>
                   <tr>
                    <td>Address </td>
                     <td>:</td>
                     <td>
-                        <textarea name="Aaddress" id="Aaddress"></textarea>
-
-                      
+                      <textarea name="address"   id="address"></textarea>
                     </td>
                   </tr>
                   <tr>
                     <td>DOB </td>
                      <td>:</td>
-                    <td><input type="date" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ></td>
+                    <td><input type="date" name="add_dob"  maxlength="50"  id="add_dob"  placeholder="DOB" ></td>
                   </tr>
                   <tr>
                     <td>Anniversary </td>
                      <td>:</td>
-                    <td><input type="date" name="anniversary"  maxlength="50"  id="anniversary" placeholder="DOB"  ></td>
+                    <td><input type="date" name="add_anniversary"  maxlength="50"  id="add_anniversary" placeholder="Anniversar"></td>
                   </tr>
                   <tr>
                     <td>Chemist/Trader for Medicine </td>
                     <td>:</td>
-                    <td><input type="text" name="chemist_medicine"   id="chemist_medicine" placeholder="RegistrationNo"  ></td>
+                    <td><input type="text" name="che_medicine"   id="che_medicine" placeholder="Chemist/Trader for Medicine"  ></td>
                   </tr>
                   
                   <tr>
                     <td>Name of Farm Manager</td>
                      <td>:</td>
-                    <td><input type="text" name="manager"   id="manager" placeholder="Contact Name"  ></td>
+                    <td><input type="text" name="farm_manager"   id="farm_manager" placeholder="Farm Manager"  ></td>
                   </tr>
 
                   <tr>
                     <td>Name of Farm Consultant </td>
                     <td>:</td>
-                    <td><input type="text" name="consultant"   id="consultant" placeholder="Contact/phone"  >
+                    <td><input type="text" name="farm_consultant"   id="farm_consultant" placeholder="Farm Consultant"  >
                     </td>
                   </tr>
 
@@ -6309,9 +6322,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Category </td>
                      <td>:</td>
                     <td>
-                        <select name="addCCategory" id="addCCategory" >
-                           <option>Fattening</option>             
-                           <option>Dairy</option>              
+                        <select name="catCategory" id="catCategory" >
+                            <option>Select Category</option>   
+                           <option value="Fattening">Fattening</option>             
+                           <option value="Dairy">Dairy</option>              
                         </select>
                     </td>
                   </tr>
@@ -6320,7 +6334,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   <tr>
                     <td>No. of birds / Animals </td>
                     <td>:</td>
-                    <td><input type="number" name="birds_animal"   id="birds_animal" placeholder="Contact/phone"  >
+                    <td><input type="number" name="catbirds_animal"   id="catbirds_animal" placeholder="0"  >
                     </td>
                   </tr>
                    
@@ -6328,9 +6342,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Rearing / Housing </td>
                      <td>:</td>
                     <td>
-                        <select name="rearing" id="rearing" >
-                                 <option>Kuccha</option>                  
-                                 <option>Pukka</option>
+
+                        <select name="cat_rearing" id="cat_rearing" >
+                            <option>Select Rearing</option>   
+                                 <option value="Kuccha">Kuccha</option>                  
+                                 <option value="Pukka">Pukka</option>
                                             
                         </select>
                     </td>
@@ -6340,9 +6356,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Feeding</td>
                      <td>:</td>
                     <td>
-                        <select name="feeding" id="feeding" >
-                                 <option>Ready feed</option>             
-                                 <option>Own made feed</option> 
+                        <select name="cat_feeding" id="cat_feeding" >
+                            <option>Select Feeding</option>   
+                                 <option value="Ready feed">Ready feed</option>             
+                                 <option value="Own made feed">Own made feed</option> 
                         </select>
                     </td>
                   </tr>
@@ -6351,39 +6368,43 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Watering</td>
                      <td>:</td>
                     <td>
-                        <select name="watering" id="watering" >
-                          <option>Nipple</option>             
-                          <option>Channel</option>       
-                          <option>Bucket</option> 
+                        <select name="cat_watering" id="cat_watering" >
+                            <option>Select Watering</option>   
+                          <option value="Nipple">Nipple</option>             
+                          <option value="Channel">Channel</option>       
+                          <option value="Bucket">Bucket</option> 
                         </select>
                     </td>
                   </tr>
                   </tr>
                    
-                  <tr>
+                  <!--<tr>
                     <td>Brooding</td>
                      <td>:</td>
                     <td>
-                        <select name="brooding" id="brooding" >
-                            <option>Cage</option>             
-                            <option>Deep Litter</option>    
-                        </select>
-                    </td>
+                        <select name="cat_brooding" id="cat_brooding" >
+                        
+                            <option>Select Brooding</option>   
+                            <option value="Cage">Cage</option>             
+                            <option value="Deep Litter">Deep Litter</option>    
+                        </select>-->
+                        <input type="hidden" name="cat_brooding"   id="cat_brooding" placeholder="0" >
+                    <!--</td>
                   </tr>
 
 
                   <tr>
                     <td>Size of Ponds in bigha </td>
                     <td>:</td>
-                    <td><input type="number" name="addCPhone"   id="addCPhone" placeholder="Contact/phone"  >
-                    </td>
-                  </tr>
+                    <td>--><input type="hidden" name="cat_ponds_bigha"   id="cat_ponds_bigha" placeholder="0" >
+                    <!--</td>
+                  </tr>-->
                  
  
                 </table>
                 
         <img id="wait_image_cattle" style="width:50px" src="loading.gif" alt="">   
-                <div id="error_chemist_add_page" style="color:#C00"></div>  
+                <div id="error_cattle_page" style="color:#C00"></div>  
                 <div id="chemistSubmit" style="color:#C00">
                   
                 <input type="submit" id="chSButton" name="chSButton"  onClick="cattle_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
@@ -6436,49 +6457,50 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Name Of Farm </td>
                     <td>:</td>
                     <td>
-                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                    <input type="text" name="addCNameA"   id="addCNameA" placeholder="Name"  ></td>
                   </tr>
                   <tr>
                     <td>Name of Owner</td>
                     <td>:</td>
                     <td>
-                    <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
+                    <input type="text" name="addAOName"   id="addAOName" placeholder="Owner Name"  ></td>
                   </tr>
                   <tr>
                    <td>Address </td>
                     <td>:</td>
                     <td>
-                    <textarea name="Aaddress" id="Aaddress"></textarea>
-                        
+                     <textarea name="addressAq"   id="addressAq"></textarea>
+                     
+
                       
                     </td>
                   </tr>
                   <tr>
                     <td>DOB </td>
                      <td>:</td>
-                    <td><input type="date" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ></td>
+                    <td><input type="date" name="addCDOBa"  maxlength="50"  id="addCDOBa" placeholder="DOB"  ></td>
                   </tr>
                   <tr>
                     <td>Anniversary </td>
                      <td>:</td>
-                    <td><input type="date" name="anniversary"  maxlength="50"  id="anniversary" placeholder="DOB"  ></td>
+                   <td><input type="date" name="anniversaryA"  maxlength="50"  id="anniversaryA" placeholder="Anniversary"  ></td>
                   </tr>
                   <tr>
                     <td>Chemist/Trader for Medicine </td>
                     <td>:</td>
-                    <td><input type="text" name="chemist_medicine"   id="chemist_medicine" placeholder="RegistrationNo"  ></td>
+                    <td><input type="text" name="chemist_medicine_a"   id="chemist_medicine_a" placeholder="Chemist/Trader for Medicine"  ></td>
                   </tr>
                   
                   <tr>
                     <td>Name of Farm Manager</td>
                      <td>:</td>
-                    <td><input type="text" name="manager"   id="manager" placeholder="Contact Name"  ></td>
+                    <td><input type="text" name="managerA"   id="managerA" placeholder="Name of Farm Manager"  ></td>
                   </tr>
 
                   <tr>
                     <td>Name of Farm Consultant </td>
                     <td>:</td>
-                    <td><input type="text" name="consultant"   id="consultant" placeholder="Contact/phone"  >
+                   <td><input type="text" name="consultantA"   id="consultantA" placeholder="Name of Farm Consultant"  >
                     </td>
                   </tr>
 
@@ -6486,11 +6508,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Category </td>
                      <td>:</td>
                     <td>
-                        <select name="addCCategory" id="addCCategory" >
-                                 <option>Finfish</option>             
-                                 <option>Shrimp brackish water</option>             
-                                 <option>Shrimp fresh water</option>             
-                                 <option>Other species</option>             
+                        <select name="addCCategoryA" id="addCCategoryA" >
+                        		
+                                 <option>Select Category</option>           
+                                 <option value="Shrimp brackish water">Shrimp brackish water</option>             
+                                 <option value="Shrimp fresh water">Shrimp fresh water</option>             
+                                 <option value="Other species">Other species</option>             
                         </select>
                     </td>
                   </tr>
@@ -6499,7 +6522,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   <tr>
                     <td>No. of birds / Animals </td>
                     <td>:</td>
-                    <td><input type="number" name="birds_animal"   id="birds_animal" placeholder="Contact/phone"  >
+                     <td><input type="number" name="birds_animal_a"   id="birds_animal_a" placeholder="No. of birds / Animals"  >
                     </td>
                   </tr>
                    
@@ -6507,10 +6530,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Rearing / Housing </td>
                      <td>:</td>
                     <td>
-                        <select name="rearing" id="rearing" >
-                                 <option>Cage</option>             
-                                 <option>Deep Litter</option>             
-                                 <option>Slat</option>
+                        <select name="rearingA" id="rearingA" >
+                        		 <option>Select Rearing / Housing</option> 
+                                 <option value="Cage">Cage</option>             
+                                 <option value="Deep Litter">Deep Litter</option>             
+                                 <option value="Slat">Slat</option>
                                             
                         </select>
                     </td>
@@ -6520,9 +6544,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Feeding</td>
                      <td>:</td>
                     <td>
-                        <select name="feeding" id="feeding" >
-                                 <option>Ready feed</option>             
-                                 <option>Own made feed</option> 
+                        <select name="feedingA" id="feedingA" >
+                        		<option>Select Feeding</option> 
+                                 <option value="Ready feed">Ready feed</option>             
+                                 <option value="Own made feed">Own made feed</option> 
                         </select>
                     </td>
                   </tr>
@@ -6531,10 +6556,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Watering</td>
                      <td>:</td>
                     <td>
-                        <select name="watering" id="watering" >
-                                 <option>Nipple</option>             
-                                 <option>Channel</option>       
-                                 <option>Bucket</option> 
+                        <select name="wateringA" id="wateringA" >
+                        		 <option>Select Watering</option>     
+                                 <option value="Nipple">Nipple</option>             
+                                 <option value="Channel">Channel</option>       
+                                 <option value="Bucket">Bucket</option> 
                         </select>
                     </td>
                   </tr>
@@ -6544,9 +6570,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td>Brooding</td>
                      <td>:</td>
                     <td>
-                        <select name="brooding" id="brooding" >
-                                  <option>Cage</option>             
-                                 <option>Deep Litter</option>    
+                        <select name="broodingA" id="broodingA" >
+                        		  <option>Select Brooding</option>          
+                                  <option value="Cage">Cage</option>             
+                                 <option value="Deep Litter">Deep Litter</option>    
                         </select>
                     </td>
                   </tr>
@@ -6555,15 +6582,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   <tr>
                     <td>Size of Ponds in bigha </td>
                     <td>:</td>
-                    <td><input type="number" name="addCPhone"   id="addCPhone" placeholder="Contact/phone"  >
+                    <td><input type="number" name="addCPhoneA"   id="addCPhoneA"  >
                     </td>
                   </tr>
                  
  
                 </table>
                 
-        <img id="wait_image_aqua" style="width:50px" src="loading.gif" alt="">   
-                <div id="error_chemist_add_page" style="color:#C00"></div>  
+        <img id="wait_image_aqua" style="width:50px" src="loading.gif" alt="">		
+                <div id="error_aqua_page" style="color:#C00"></div>	
                 <div id="chemistSubmit" style="color:#C00">
                   
                 <input type="submit" id="chSButton" name="chSButton"  onClick="aqua_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
@@ -6583,7 +6610,52 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 
 <!-- END -->
- 
+<div class="view" id="page_farmlistView">
+        <div class="pages">
+        <header>
+        <h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Farm</h1>
+        <img src="icon-arrow-bak.png" width="30" height="30" alt="Back" onClick="back_page_farm()">
+    </header> 
+    
+            <div class="panel" id="page_farmlist" style="background-color:#EDFEED">
+            </br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     
+				
+			
+				<div id="err_farmlist" style="color:#C00"></div>
+				<!--<div><span class="market" style="font-size:16px"></span></div>  -->
+                <!--<div><span class="market" style="font-size:12px;color:#FFF" ></span></div>   -->
+
+				<br/> 
+                      
+                        <ul class="list" id="farmlist_combo_id_lv" style="background-color:#EDFEED">				
+                       
+                        </ul>
+                        
+                        
+                        <div align="center">
+                        <img id="wait_image_farmlist" style="width:50px" src="loading.gif" alt="">
+                       </div>
+                        <br>
+                        <br>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+        
+		<a onClick="homePage()" class="icon home" ></a>
+        
+        
+       
+         </footer>
+		
+
+        
+    </div> 
  
  
  				<!--Nazma Azam, Shima, Jolly 2019-01-28 end-->
@@ -6601,4 +6673,4 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
 </body>
 
-</html>>>
+</html>>>>>>>>
