@@ -14739,7 +14739,7 @@ function poultryImage() {
 		
 }
 function onSuccess_poultryImage(imageURI) {
-	//alert ('Success')
+	alert ('Success')
     var image = document.getElementById('myImagepoultry');
     image.src = imageURI;
 	imagePath = imageURI;
@@ -14749,7 +14749,7 @@ function onSuccess_poultryImage(imageURI) {
 		
 }
 function onFail_poultryImage(message) {
-	//alert ('Fail')
+	alert ('Fail')
 	imagePath="";
     alert('Failed because: ' + message);
 }
