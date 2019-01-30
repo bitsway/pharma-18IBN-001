@@ -14781,7 +14781,7 @@ function onFail_cattleImage(message) {
 //===
 
 //====
-function cattleImage() {
+function aquaImage() {
 	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
 		//destinationType: Camera.DestinationType.FILE_URI });
    navigator.camera.getPicture(onSuccess_aquaImage, onFail_aquaImage, { quality: 90,
