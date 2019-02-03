@@ -106,6 +106,25 @@ var  apipath ='http://a007.yeapps.com/acme/medSearch/'
 		
 		getLocationInfo_ready();
 		
+	//	Nazma Azam 2019-01-31 start
+
+		$('#farm_combo_id_lv_tr').empty();
+		$('#farm_combo_id_lv_tr').append(localStorage.visit_plan_farmlist_combo_tr);	
+		
+
+	//	Nazma Azam 2019-01-31 end
+	      // ===============2019-02-01 start novivo2019 start ================
+		
+		$('#tr_poultry').empty();
+	 	$('#tr_poultry').append(localStorage.visit_plan_farmlist_combo_tr);
+
+		$('#tr_cattle').empty();
+	 	$('#tr_cattle').append(localStorage.visit_plan_farmlist_combo_tr);
+
+		$('#tr_aqua').empty();
+	 	$('#tr_aqua').append(localStorage.visit_plan_farmlist_combo_tr);
+       
+       // ===============2019-02-01 end novivo2019 end ================	
 		//$("#se_mpo").val(localStorage.user_id);
 
 		//alert (localStorage.unschedule_market_cmb_id)
@@ -1547,7 +1566,7 @@ function check_user() {
 	
 	//var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
-	var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
@@ -1555,6 +1574,7 @@ function check_user() {
 //	localStorage.path_value_report='http://w05.yeapps.com/kpl/tour_web_members/'
 	
 	
+var  apipath_base_photo_dm='http://127.0.0.1:8000/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	//var path_value='http://w05.yeapps.com/kpl/team_report_mobile/teamShow_web?'
@@ -1588,6 +1608,7 @@ function check_user() {
 		$("#doctorButton").hide();
 		$("#wait_image_login").show();
 		$("#error_logintext").val(apipath_base_photo_dm);
+		alert(apipath_base_photo_dm)
 		$.ajax(apipath_base_photo_dm,{
 								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 			type: 'POST',
@@ -1606,7 +1627,7 @@ function check_user() {
 				
 				var dtaStr=data.replace('<start>','').replace('<end>','')
 				var resultArray = dtaStr.split('<fd>');	
-				
+				//alert(dtaStr)
 					if(resultArray.length>3){
 						var base_url=resultArray[0];
 						var photo_url=resultArray[1];
@@ -1664,7 +1685,7 @@ function check_user() {
 							
 							//alert (localStorage.sync_date)
 							
-							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							//$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -1907,7 +1928,12 @@ function check_user() {
 													var profileMarketComb='';								
 													var unscheduleMarketComb='';
 													var unscheduleMarketComb_tr=''
+													//Nazma Azam 2019-01-31 start
 													
+													var unscheduleFarmComb_tr=''
+
+													//Nazma Azam 2019-01-31 end
+
 													for (var k=0; k < planMarketListShowLength; k++){
 														var planMarketValueArray = planMarketList[k].split('<fd>');
 														planMarketID=planMarketValueArray[0];
@@ -1925,10 +1951,18 @@ function check_user() {
 															
 															unscheduleMarketComb_tr+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="summary_report_doctor_tr(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameID+'</a></font></li>';
 
+															
+															//	Nazma Azam 2019-01-31 start														
+															
+														unscheduleFarmComb_tr+='<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+marketNameID+'"><font style="font-size:12px; color:#306161; background-color:#ECECFF">'+marketNameID+'</font></option>'														
+															
+															//Nazma Azam 2019-01-31 end
+
+															
 															}
 													}
 													
-																				
+													//alert(unscheduleFarmComb_tr)							
 													localStorage.visit_plan_marketlist_combo=visitPlanMarketComb;								
 													localStorage.unschedule_market_cmb_id=unscheduleMarketComb;
 													localStorage.market_cmb_list_cp=profileMarketComb;							
@@ -1936,7 +1970,17 @@ function check_user() {
 
 													localStorage.visit_plan_marketlist_combo_tr=unscheduleMarketComb_tr;
 													$('#market_combo_id_lv_tr').empty();
-													$('#market_combo_id_lv_tr').append(localStorage.visit_plan_marketlist_combo_tr);							
+													$('#market_combo_id_lv_tr').append(localStorage.visit_plan_marketlist_combo_tr);
+											
+											
+											//Nazma Azam 2019-01-31 start
+											
+													localStorage.visit_plan_farmlist_combo_tr=unscheduleFarmComb_tr;
+													$('#farm_combo_id_lv_tr').empty();
+													$('#farm_combo_id_lv_tr').append(localStorage.visit_plan_farmlist_combo_tr);	
+											//alert(localStorage.visit_plan_farmlist_combo_tr)
+											
+											//Nazma Azam 2019-01-31 end
 													
 													
 													//alert (localStorage.unschedule_market_cmb_id)
@@ -2105,7 +2149,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 														
 														var product_qty='';																		
 														
-														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_vat'+product_id2+'" value="'+vat+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td>&nbsp;&nbsp;</td><td  style="text-align:left; color:#306161" >'+'<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font> | '+'<font class="itemCode">'+ product_id2.toUpperCase()+' | '+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br> <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
+														product_tbl_order=product_tbl_order+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_item(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"  ><td width="60px" style="text-align:center; padding-left:5px;"><input class="orderProduct" maxlength="4" onChange="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_vat'+product_id2+'" value="'+vat+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_promo'+product_id2.toUpperCase()+'" value="'+product_str+'" placeholder="qty" ></td><td>  </td><td  style="text-align:left; color:#306161" >'+'<font class="name" id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font> | '+'<font class="itemCode">'+ product_id2.toUpperCase()+' | '+product_price+'</font><span id="stockShow'+product_id2.toUpperCase()+'" style="color:#600"></span></br> <span style="background-color:#FFFF53; color:#F00" id="promoShow'+product_id2.toUpperCase()+'" style="font-size:12px">'+product_str+'</span></td></tr>'+'</table>'+'</li>';
 														//------------ Doctor Campaign Item list
 														$("#error_login").html('Processing Product List....1');
 														
@@ -2115,7 +2159,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 														$("#error_login").html('Processing Product List....2');	
 														//-------------Sample----------
 														
-														product_tbl_doc_sample=product_tbl_doc_sample+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_sample(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;"><input class="docSample" maxlength="4" onChange="getSampleData_keyup(\''+product_id2+'\')" type="number" id="sample_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="sample_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="sample_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="sample_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">&nbsp;&nbsp;<font  class="name" >'+product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
+														product_tbl_doc_sample=product_tbl_doc_sample+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_sample(\''+product_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;"><input class="docSample" maxlength="4" onChange="getSampleData_keyup(\''+product_id2+'\')" type="number" id="sample_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="sample_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="sample_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="sample_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">  <font  class="name" >'+product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 
 														
 													
@@ -2143,7 +2187,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 												
 														//-------------Sample----------
 														
-														product_tbl_doc_sample=product_tbl_doc_sample+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_sample(\''+sample_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;"><input class="docSample" maxlength="4" onChange="getSampleData_keyup(\''+sample_id2+'\')" type="number" id="sample_qty'+sample_id2+'"  value="'+sample_qty+'" placeholder="0" ><input type="hidden" id="sample_id'+sample_id2+'" value="'+sample_id2+'" ><input type="hidden" id="sample_price'+sample_id2+'" value="'+sample_price+'" ><input type="hidden" id="sample_name'+sample_id2.toUpperCase()+'" value="'+sample_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">&nbsp;&nbsp;<font  class="name" >'+sample_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
+														product_tbl_doc_sample=product_tbl_doc_sample+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_sample(\''+sample_id2+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;"><input class="docSample" maxlength="4" onChange="getSampleData_keyup(\''+sample_id2+'\')" type="number" id="sample_qty'+sample_id2+'"  value="'+sample_qty+'" placeholder="0" ><input type="hidden" id="sample_id'+sample_id2+'" value="'+sample_id2+'" ><input type="hidden" id="sample_price'+sample_id2+'" value="'+sample_price+'" ><input type="hidden" id="sample_name'+sample_id2.toUpperCase()+'" value="'+sample_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">  <font  class="name" >'+sample_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 
 														
 														
@@ -2203,7 +2247,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 												
 												//------------ Doctor Gift Item list
 												
-												gift_tbl_doc=gift_tbl_doc+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_gift(\''+gift_id+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;">'+'<input type="hidden" id="gift_id'+gift_id+'" value="'+gift_id+'" ><input class="docGift" maxlength="4" onChange="getGiftData_keyup(\''+gift_id+'\')" type="number" id="gift_qty'+gift_id+'"  value="" placeholder="0" ><input type="hidden" id="doc_gift_name'+gift_id.toUpperCase()+'" value="'+gift_name.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'&nbsp;&nbsp;<font id="'+ gift_name +'" onClick="tr_item_doc_campaign(\''+gift_id+'\')" class="name" >'+ gift_name.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
+												gift_tbl_doc=gift_tbl_doc+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_gift(\''+gift_id+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;">'+'<input type="hidden" id="gift_id'+gift_id+'" value="'+gift_id+'" ><input class="docGift" maxlength="4" onChange="getGiftData_keyup(\''+gift_id+'\')" type="number" id="gift_qty'+gift_id+'"  value="" placeholder="0" ><input type="hidden" id="doc_gift_name'+gift_id.toUpperCase()+'" value="'+gift_name.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'  <font id="'+ gift_name +'" onClick="tr_item_doc_campaign(\''+gift_id+'\')" class="name" >'+ gift_name.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 												
 												
 												
@@ -2243,7 +2287,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 															
 															//------------ Doctor ppm Item list
 															
-															ppm_tbl_doc=ppm_tbl_doc+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_ppm(\''+ppm_id+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;">'+'<input type="hidden" id="ppm_id'+ppm_id+'" value="'+ppm_id+'" ><input class="docPpm" maxlength="4" onChange="getppmData_keyup(\''+ppm_id+'\')" type="number" id="ppm_qty'+ppm_id+'"  value="" placeholder="0" ><input type="hidden" id="doc_ppm_name'+ppm_id.toUpperCase()+'" value="'+ppm_name.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'&nbsp;&nbsp;<font id="'+ ppm_name +'" onClick="tr_item_doc_campaign(\''+ppm_id+'\')" class="name">'+ ppm_name.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
+															ppm_tbl_doc=ppm_tbl_doc+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="tr_ppm(\''+ppm_id+'\')">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="80px" style="text-align:center; padding-left:5px;">'+'<input type="hidden" id="ppm_id'+ppm_id+'" value="'+ppm_id+'" ><input class="docPpm" maxlength="4" onChange="getppmData_keyup(\''+ppm_id+'\')" type="number" id="ppm_qty'+ppm_id+'"  value="" placeholder="0" ><input type="hidden" id="doc_ppm_name'+ppm_id.toUpperCase()+'" value="'+ppm_name.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'  <font id="'+ ppm_name +'" onClick="tr_item_doc_campaign(\''+ppm_id+'\')" class="name">'+ ppm_name.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 															
 															
 															
@@ -3248,7 +3292,7 @@ function repPendingDoc(rep_id){
 													
 												//thisMonthTable=thisMonthTable+'<tr ><td width="50px" >'+dayName+'</td><td width="30px">'+dayShow+'</td><td width="40%">'
 												
-												thisMonthTable=thisMonthTable+'<tr ><td width="10%">'+dayShow+'&nbsp;&nbsp;'+dayName+'</font></td>'
+												thisMonthTable=thisMonthTable+'<tr ><td width="10%">'+dayShow+'  '+dayName+'</font></td>'
 												thisMonthTable=thisMonthTable+'<td style="border-color:#096;background-color:#E7F5FE ">'
 				
 												//'Bashndhara<br> Nadda<br>'
@@ -3463,7 +3507,7 @@ function repCancelReqShow(i){
 	$("#dayNumdit").html(editday+' '+monthShow)
 	$("#infoEdit").html(editinfo)
 	
-	var selectCombo='</br>&nbsp;&nbsp;&nbsp;<select id="othersAll" style=" width:100px" data-native-menu="false"  >'
+	var selectCombo='</br>   <select id="othersAll" style=" width:100px" data-native-menu="false"  >'
 	selectCombo=selectCombo+'<option value="" >Select</option>'
 	selectCombo=selectCombo+'<option value="HOLIDAY" >HOLIDAY</option>'
 	selectCombo=selectCombo+'<option value="MEETING" >MEETING</option>'
@@ -3801,7 +3845,7 @@ function tourCheckFirst(){
 		var dayCheckFinal=year+'-'+monthCheck+'-'+dayCheck
 		
 		//alert (dayCheckFinal)		
-		thisMonthTable=thisMonthTable+'<tr ><td width="10%">'+'<font id="'+i+'editdayName">'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font id="'+i+'editday">'+dayName+'</font></td><td  style="border-left:hidden; "><table style="border-color:#096;background-color:#E7F5FE " width="100%" border="0" cellspacing="0"  ><tr><td >'
+		thisMonthTable=thisMonthTable+'<tr ><td width="10%">'+'<font id="'+i+'editdayName">'+dayShow+'</font>'+'  '+'<font id="'+i+'editday">'+dayName+'</font></td><td  style="border-left:hidden; "><table style="border-color:#096;background-color:#E7F5FE " width="100%" border="0" cellspacing="0"  ><tr><td >'
 		//'Bashndhara<br> Nadda<br>'
 		if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
 			var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
@@ -3893,7 +3937,7 @@ function tourCheckFirst(){
 				var dateNextMonth = yearNext+'-'+monthNextGet+'-'+dayShow;
 				//alert (dateNextMonth)
 				
-				nextMonthTable=nextMonthTable+'<tr ><td onClick="toggleDivNext('+i+')" width="50px" height="14px"> '+'<font >'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font >'+dayNameNext+'</font>'+'<input type="hidden" id="'+i+'_date" value="'+dateNextMonth+'"  /></td>'
+				nextMonthTable=nextMonthTable+'<tr ><td onClick="toggleDivNext('+i+')" width="50px" height="14px"> '+'<font >'+dayShow+'</font>'+'  '+'<font >'+dayNameNext+'</font>'+'<input type="hidden" id="'+i+'_date" value="'+dateNextMonth+'"  /></td>'
 				nextMonthTable=nextMonthTable+'<td>'
 		
 				var marketList=(localStorage.marketTourStr).split('<rd>')
@@ -3952,7 +3996,7 @@ function tourCheckFirst(){
 				if (dayShow<10){dayShowNextCheck='0'+dayShow}else{dayShowNextCheck=dayShow}
 				var dateNextMonth = yearNext+'-'+monthNextCheck+'-'+dayShowNextCheck;
 				//alert (dateNextMonth)
-				nextMonthTable=nextMonthTable+'<tr ><td width="10%">'+'<font id="'+i+'editdayNameNext">'+dayShow+'</font>'+'&nbsp;&nbsp;'+'<font id="'+i+'editdayNext">'+dayNameNext+'</font></td>'
+				nextMonthTable=nextMonthTable+'<tr ><td width="10%">'+'<font id="'+i+'editdayNameNext">'+dayShow+'</font>'+'  '+'<font id="'+i+'editdayNext">'+dayNameNext+'</font></td>'
 				nextMonthTable=nextMonthTable+'<td style="border-color:#096;background-color:#E7F5FE ">'
 		//'Bashndhara<br> Nadda<br>'
 					//alert (dateNextMonth)
@@ -4214,7 +4258,7 @@ function marketNext() {
 							
 							if(mClientID!=''){
 
-									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></table></li>';
+									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">    </td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></table></li>';
 							}
 						 }
 					
@@ -4346,8 +4390,8 @@ function marketNext_sup() {
 										var mClientID=mClientValueArray[0];
 										var mClientName=mClientValueArray[1];
 										var mClientCat=mClientValueArray[2];
-										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></tr></table></li>'	
-										//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
+										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">    </td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></tr></table></li>'	
+										//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font>     '+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
 									}
 								
 								
@@ -5426,7 +5470,7 @@ function marketNext_doc() {
 							//alert (mClientID)
 							if (mClientID!=''){
 								if ((localStorage.doctor_flag==1) & (localStorage.doctor_plan_flag==0) & (localStorage.doctor_pr==0)){
-									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_doctor_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'|'+mClientID+'</font></a></td></tr></table></li>';
+									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_doctor_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">    </td><td><a onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'|'+mClientID+'</font></a></td></tr></table></li>';
 								}
 								else{
 									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'|'+mClientID+'</font></a></li>';
@@ -6296,7 +6340,7 @@ function repPendingDocView(rep_id){
 											
 											//alert (dayCheckFinal)
 
-											thisMonthTable=thisMonthTable+'<tr ><td width="40px">'+dayName+'&nbsp;&nbsp;'+dayShow +'</td><td >'
+											thisMonthTable=thisMonthTable+'<tr ><td width="40px">'+dayName+'  '+dayShow +'</td><td >'
 											//'Bashndhara<br> Nadda<br>'
 											if (docTThisMonthRow.indexOf('<'+dayCheckFinal+'>')!=-1){
 												var dateRouteSingle=docTThisMonthRow.split('<'+dayCheckFinal+'>')[1].split('</'+dayCheckFinal+'>')[0]
@@ -14359,8 +14403,8 @@ function marketNext_Doc_online() {
 										var mClientID=mClientValueArray[0];
 										var mClientName=mClientValueArray[1];
 										var mClientCat=mClientValueArray[2];
-										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></tr></table></li>'	
-										//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
+										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">    </td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></tr></table></li>'	
+										//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font>     '+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
 									}
 								
 								
@@ -14705,25 +14749,99 @@ else{
 
 
 //		Nazma Azam, Shima, Jolly 2019-01-28 start
-function page_farm_link() {	
+function page_farm_link() {
+	//localStorage.farm_combo_val_tr=''
 	$.afui.loadContent("#farm_Page",true,true,'right');
 }
 
 function poultry_next_page() {	
+	//Nazma Azam 2019-02-01 start
+	
+				   	$("#poultry_farm_id_text").val('0');
+	
+	
+	
+	//alert()
+					$("#addPName").val('')
+					$("#addPOName").val('')
+					$("#AddressP").val('')
+					$("#addCDOBp").val('')
+					$("#anniversaryP").val('')
+					$("#chemist_medicine_p").val('')
+					$("#managerP").val('')
+					$("#consultantP").val('')
+					$("#birds_animal_p").val('')
+	
+	//Nazma Azam 2019-02-01 end
+	// ===============2019-02-01 start novivo2019  start================
+	var farm_combo_area_list_p=localStorage.visit_plan_farmlist_combo_tr;
+
+	$('#tr_poultry').empty();
+	$('#tr_poultry').append(farm_combo_area_list_p);
+
+
+
+// ===============2019-02-01 novivo2019 end ================
 	$.afui.loadContent("#poultry_page",true,true,'right');
 }
 
 
 function cattle_next_page() {	
+	
+//	Nazma Azam 2019-02-01 start
+	$("#farm_name").val('')
+	$("#owner_name").val('')
+	$("#address").val('')
+	$("#add_dob").val('')
+	$("#add_anniversary").val('')
+	$("#che_medicine").val('')
+	$("#farm_manager").val('')
+	$("#farm_consultant").val('')
+	$("#catbirds_animal").val('')
+	$("#cattle_farm_id_text").val('0')
+
+//	Nazma Azam 2019-02-01 end	
+	// ===============2019-02-01 start novivo2019  start================
+
+var farm_combo_area_list_c=localStorage.visit_plan_farmlist_combo_tr;
+
+$('#tr_cattle').empty();
+$('#tr_cattle').append(farm_combo_area_list_c);
+
+// ===============2019-02-01 end novivo2019 end ================
+	
 	$.afui.loadContent("#cattle_page",true,true,'right');
 }
 
 function aqua_next_page() {	
+	//Nazma Azam 2019-02-01 start
+				   	$("#aqua_farm_id_text").val('0');
+					$("#addCNameA").val('')
+					$("#addAOName").val('')
+					$("#addressAq").val('')
+					$("#addCDOBa").val('')
+					$("#anniversaryA").val('')
+					$("#chemist_medicine_a").val('')
+					$("#managerA").val('')
+					$("#consultantA").val('')
+					$("#birds_animal_a").val('')
+	
+	
+	//Nazma Azam 2019-02-01 end
+		// ===============2019-02-01 novivo2019  start================
+
+	var farm_combo_area_list_a=localStorage.visit_plan_farmlist_combo_tr;
+
+	$('#tr_aqua').empty();
+	$('#tr_aqua').append(farm_combo_area_list_a);
+
+  // ===============2019-02-01 novivo2019 end ================
 	$.afui.loadContent("#aqua_page",true,true,'right');
 }
 
 
 function back_page_farm() {	
+	//localStorage.farm_combo_val_tr=''
 	$.afui.loadContent("#farm_Page",true,true,'right');
 }
 
@@ -14809,11 +14927,20 @@ function onFail_aquaImage(message) {
 function poultry_submit() {
 	$("#error_poultry_add_page").html('' )
 	$("#wait_image_poultry").show();
-//	var market_Id=localStorage.visit_market_show.split('|')[1];
-//	var visitDocId=localStorage.visit_client.split('|')[1]	
-	
+
+		//Nazma Azam 2019-02-01 start
+	var poultry_farm_id_text=$("#poultry_farm_id_text").val();
+	alert(poultry_farm_id_text)
+	//Nazma Azam 2019-02-01 end
 	addPName=$("#addPName").val()
 	addPOName=$("#addPOName").val()
+	// ===============2019-02-01 start novivo2019  start================
+
+	var tr_poultry=$("#tr_poultry").val();
+	var MobileP=$("#MobileP").val();
+
+	// ===============2019-02-01 novivo2019 end ================
+	
 	AddressP=$("#AddressP").val()
 	addCDOBp=$("#addCDOBp").val()
 	anniversaryP=$("#anniversaryP").val()
@@ -14843,9 +14970,15 @@ function poultry_submit() {
 		
 	flag_lat_lon=1
 	if(flag_lat_lon == 1){
-	//alert(localStorage.base_url+'poultry_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addPName='+addPName+'&addPOName='+addPOName+'&AddressP='+AddressP+'&addCDOBp='+addCDOBp+'&anniversaryP='+anniversaryP+'&chemist_medicine_p='+chemist_medicine_p+'&managerP='+managerP+'&consultantP='+consultantP+'&addCCategoryP='+addCCategoryP+'&birds_animal_p='+birds_animal_p+'&rearingP='+rearingP+'&feedingP='+feedingP+'&wateringP='+wateringP+'&broodingP='+broodingP+'&addPondsP='+addPondsP+'&latitude='+latitude+'&longitude='+longitude)
+	//alert(localStorage.base_url+'poultry_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addPName='+addPName+'&addPOName='+addPOName+'&tr_poultry='+tr_poultry+'&AddressP='+AddressP+'&MobileP='+MobileP+'&addCDOBp='+addCDOBp+'&anniversaryP='+anniversaryP+'&chemist_medicine_p='+chemist_medicine_p+'&managerP='+managerP+'&consultantP='+consultantP+'&addCCategoryP='+addCCategoryP+'&birds_animal_p='+birds_animal_p+'&rearingP='+rearingP+'&feedingP='+feedingP+'&wateringP='+wateringP+'&broodingP='+broodingP+'&addPondsP='+addPondsP+'&latitude='+latitude+'&longitude='+longitude+'&poultry_farm_id_text='+poultry_farm_id_text)
 //	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
-		$.ajax(localStorage.base_url+'poultry_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addPName='+addPName+'&addPOName='+addPOName+'&AddressP='+AddressP+'&addCDOBp='+addCDOBp+'&anniversaryP='+anniversaryP+'&chemist_medicine_p='+chemist_medicine_p+'&managerP='+managerP+'&consultantP='+consultantP+'&addCCategoryP='+addCCategoryP+'&birds_animal_p='+birds_animal_p+'&rearingP='+rearingP+'&feedingP='+feedingP+'&wateringP='+wateringP+'&broodingP='+broodingP+'&addPondsP='+addPondsP+'&latitude='+latitude+'&longitude='+longitude,{
+		// ===============2019-02-01 novivo2019 start ================
+				//Nazma Azam 2019-02-01 start
+
+		$.ajax(localStorage.base_url+'poultry_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addPName='+addPName+'&addPOName='+addPOName+'&tr_poultry='+tr_poultry+'&AddressP='+AddressP+'&MobileP='+MobileP+'&addCDOBp='+addCDOBp+'&anniversaryP='+anniversaryP+'&chemist_medicine_p='+chemist_medicine_p+'&managerP='+managerP+'&consultantP='+consultantP+'&addCCategoryP='+addCCategoryP+'&birds_animal_p='+birds_animal_p+'&rearingP='+rearingP+'&feedingP='+feedingP+'&wateringP='+wateringP+'&broodingP='+broodingP+'&addPondsP='+addPondsP+'&latitude='+latitude+'&longitude='+longitude+'&poultry_farm_id_text='+poultry_farm_id_text,{
+		//Nazma Azam 2019-02-01 end
+
+									// ===============2019-02-01 novivo2019 end ================
 
 								type: 'POST',
 								timeout: 30000,
@@ -14868,6 +15001,28 @@ function poultry_submit() {
 										}
 								else if (resultArray[0]=='SUCCESS'){	
 									var result_string=resultArray[1];
+								// ===============2019-02-01 novivo2019 start ================
+									$("#addPName").val('');
+								    $("#addPOName").val('');
+								    $("#AddressP").val('');
+								    $("#MobileP").val('');
+								    $("#addCDOBp").val('');
+								    $("#anniversaryP").val('');
+								    $("#chemist_medicine_p").val('');
+								    $("#managerP").val('');
+								    $("#consultantP").val('');
+								    // $("#addCCategoryP").val('');
+								    $("#birds_animal_p").val('');
+								    // $("#rearingP").val('');
+								  
+								    // $("#feedingP").val('');
+								    // $("#wateringP").val('');
+								    // $("#broodingP").val('');
+								    // $("#addPondsP").val('');
+
+
+								// ===============2019-02-01 novivo2019 end ================
+									
 									
 									$("#error_poultry_add_page").html(result_string)
 									
@@ -14896,9 +15051,20 @@ function cattle_submit(){
   $("#wait_image_cattle").show(); 
 
   $("#error_cattle_page").html('' ); 
+ 
+	//Nazma Azam 2019-02-01 start
+	var cattle_farm_id_text=$("#cattle_farm_id_text").val();
+	//Nazma Azam 2019-02-01 end
 
   var farm_name=$("#farm_name").val();
   var owner_name=$("#owner_name").val();
+// ===============2019-02-01 novivo2019  start================
+
+  var tr_cattle=$("#tr_cattle").val()
+  var mobileC= $("#mobileC").val();
+
+// ===============2019-02-01 novivo2019 end ================
+	
   var address=$("#address").val();
   var add_dob=$("#add_dob").val();
   var anniversary=$("#add_anniversary").val();
@@ -14918,6 +15084,10 @@ function cattle_submit(){
   var watering=$("#cat_watering").val();
   var brooding=$("#cat_brooding").val();
   var ponds_bigha=$("#cat_ponds_bigha").val();
+	
+	//Nazma Azam 2019-02-01 start
+  //var tr_cattle=$("#tr_cattle").val();
+	//Nazma Azam 2019-02-01 start
 
   var imageText="chAddPhoto"
   var chPhoto=$("#"+imageText).val();
@@ -14944,8 +15114,15 @@ function cattle_submit(){
 		
 	flag_lat_lon=1
 	if(flag_lat_lon == 1){
-//	alert(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha)
-  $.ajax(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha,{
+	alert(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&tr_cattle='+tr_cattle+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&mobileC='+mobileC+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha+'&cattle_farm_id_text='+cattle_farm_id_text)
+		
+		//Nazma Azam 2019-02-01 start
+									// ===============2019-02-01 novivo2019  start================
+  $.ajax(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&tr_cattle'+tr_cattle+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&mobileC='+mobileC+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha+'&cattle_farm_id_text='+cattle_farm_id_text,{
+								
+									// ===============2019-02-01 novivo2019 end ================
+	  
+	  //Nazma Azam 2019-02-01 end
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
@@ -14967,7 +15144,26 @@ function cattle_submit(){
 										}
 								else if (resultArray[0]=='SUCCESS'){	
 									var result_string=resultArray[1];
-									
+									// ===============2019-02-01 novivo2019 start================
+
+									$("#farm_name").val('');
+									$("#owner_name").val('');
+									$("#address").val('');
+									$("#mobileC").val('');
+									$("#add_dob").val('');
+									$("#add_anniversary").val('');
+									$("#che_medicine").val('');
+									$("#farm_manager").val('');
+									$("#farm_consultant").val('');
+									// $("#catCategory").val('');
+									$("#catbirds_animal").val('');
+									// $("#cat_rearing").val('');
+									// $("#cat_feeding").val(''); 
+									// $("#cat_watering").val('');
+									// $("#cat_brooding").val('');
+									$("#cat_ponds_bigha").val('');
+
+									// ===============2019-02-01 novivo2019 end ================
 									$("#error_cattle_page").html(result_string)
 									
 								
@@ -14990,11 +15186,20 @@ function aqua_submit() {
 //alert('ok')
 	$("#error_aqua_page").html('' )
 	$("#wait_image_aqua").show();
-//	var market_Id=localStorage.visit_market_show.split('|')[1];
-//	var visitDocId=localStorage.visit_client.split('|')[1]	
+		//Nazma Azam 2019-02-01 start
+	var aqua_farm_id_text=$("#aqua_farm_id_text").val();
+	//Nazma Azam 2019-02-01 end
 	
 	addCNameA=$("#addCNameA").val()
 	addAOName=$("#addAOName").val()
+
+		// ===============2019-02-01 start novivo2019 start ================
+
+	var tr_aqua=$("#tr_aqua").val()
+	var mobileA=$("#mobileA").val()
+
+	// ===============2019-02-01 end novivo2019 end ================
+
 	
 	addressAq=$("#addressAq").val()
 	// alert(addressAq)
@@ -15027,7 +15232,12 @@ function aqua_submit() {
 	if(flag_lat_lon == 1){
 	//alert(localStorage.base_url+'aqua_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addCNameA='+addCNameA+'&addAOName='+addAOName+'&addressAq='+addressAq+'&addCDOBa='+addCDOBa+'&anniversaryA='+anniversaryA+'&chemist_medicine_a='+chemist_medicine_a+'&managerA='+managerA+'&consultantA='+consultantA+'&addCCategoryA='+addCCategoryA+'&birds_animal_a='+birds_animal_a+'&rearingA='+rearingA+'&feedingA='+feedingA+'&wateringA='+wateringA+'&broodingA='+broodingA+'&addCPhoneA='+addCPhoneA+'&latitude='+latitude+'&longitude='+longitude)
 //	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
-		$.ajax(localStorage.base_url+'aqua_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addCNameA='+addCNameA+'&addAOName='+addAOName+'&addressAq='+addressAq+'&addCDOBa='+addCDOBa+'&anniversaryA='+anniversaryA+'&chemist_medicine_a='+chemist_medicine_a+'&managerA='+managerA+'&consultantA='+consultantA+'&addCCategoryA='+addCCategoryA+'&birds_animal_a='+birds_animal_a+'&rearingA='+rearingA+'&feedingA='+feedingA+'&wateringA='+wateringA+'&broodingA='+broodingA+'&addCPhoneA='+addCPhoneA+'&latitude='+latitude+'&longitude='+longitude,{
+										// ===============2019-02-01 start novivo2019 start ================
+		//Nazma Azam 2019-02-01 start
+		$.ajax(localStorage.base_url+'aqua_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addCNameA='+addCNameA+'&addAOName='+addAOName+'&tr_aqua='+tr_aqua+'&addressAq='+addressAq+'&mobileA='+mobileA+'&addCDOBa='+addCDOBa+'&anniversaryA='+anniversaryA+'&chemist_medicine_a='+chemist_medicine_a+'&managerA='+managerA+'&consultantA='+consultantA+'&addCCategoryA='+addCCategoryA+'&birds_animal_a='+birds_animal_a+'&rearingA='+rearingA+'&feedingA='+feedingA+'&wateringA='+wateringA+'&broodingA='+broodingA+'&addCPhoneA='+addCPhoneA+'&latitude='+latitude+'&longitude='+longitude+'&aqua_farm_id_text='+aqua_farm_id_text,{
+
+			//Nazma Azam 2019-02-01 end
+									// ===============2019-02-01 end novivo2019 end ================
 
 								type: 'POST',
 								timeout: 30000,
@@ -15050,7 +15260,26 @@ function aqua_submit() {
 										}
 								else if (resultArray[0]=='SUCCESS'){	
 									var result_string=resultArray[1];
-									
+											// ===============2019-02-01 start novivo2019 start ================
+
+								  $("#addCNameA").val('');
+								  $("#addAOName").val('');
+								  $("#addressAq").val('');
+								  $("#mobileA").val('');
+								  $("#addCDOBa").val('');
+								  $("#anniversaryA").val('');
+								  $("#chemist_medicine_a").val('');
+								  $("#managerA").val('');
+								  $("#consultantA").val('');
+								  // $("#addCCategoryA").val('');
+								  $("#birds_animal_a").val('');
+								  // $("#rearingA").val('');
+								  // $("#feedingA").val('');
+								  // $("#wateringA").val('');
+								  // $("#broodingA").val('');
+								  $("#addCPhoneA").val('');
+
+									// ===============2019-02-01 end novivo2019 end ================							
 									$("#error_aqua_page").html(result_string)
 									
 								
@@ -15069,9 +15298,17 @@ function aqua_submit() {
 
 
 function farmList_page(){
-	//alert (localStorage.base_url+'farmListData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+	//Nazma Azam 2019-02-01 start
+	var farm_combo_id_lv_tr=$("#farm_combo_id_lv_tr").val();
+	localStorage.farm_combo_val_tr=farm_combo_id_lv_tr
+	alert(localStorage.farm_combo_val_tr)
+	//alert(farm_combo_id_lv_tr);
+	alert (localStorage.base_url+'farmListData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_combo_val='+localStorage.farm_combo_val_tr)
+	
+	//Nazma Azam 2019-02-01 end
+	
 	$("#wait_image_farmlist").show();
-	$.ajax(localStorage.base_url+'farmListData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+	$.ajax(localStorage.base_url+'farmListData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_combo_val='+localStorage.farm_combo_val_tr,{
 
 								type: 'POST',
 								timeout: 30000,
@@ -15096,6 +15333,11 @@ function farmList_page(){
 								else if (resultArray[0]=='SUCCESS'){	
 								
 								//		========================
+									//Nazma Azam 2019-02-01 start
+									
+									$("#err_farmlist").text('');	
+									//Nazma Azam 2019-02-01 end
+									
 										var result_string=resultArray[1];
 										
 										localStorage.farmList=result_string
@@ -15111,7 +15353,7 @@ function farmList_page(){
 												var farmID=farmListArray[0];
 												var farm_name=farmListArray[1];
 												
-												farmShow_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_farm_profile(\''+farm_name+'|'+farmID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="farmVist(\''+farm_name+'|'+farmID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+farm_name+'| </font>'+farmID+'</font></a></td></tr></table></li>'	
+												farmShow_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_farm_profile(\''+farm_name+'|'+farmID+'\')" style="height:20px; width:20px" src="editProfile.png">    </td><td><a  onClick="farmVist(\''+farm_name+'|'+farmID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+farm_name+'| </font>'+farmID+'</font></a></td></tr></table></li>'	
 												
 											}
 										
@@ -15139,4 +15381,135 @@ function farmList_page(){
 	$.afui.loadContent("#page_farmlist",true,true,'right');
 }
 
+//==============Farm Edit===========
+function page_farm_profile(getData) {
+	//alert(getData)
+	localStorage.visit_farm_route=getData
+	$("#myerror_doctor_prof").html('' )
+	$("#wait_image_docProf").show();
+	var farm_Id=localStorage.visit_farm_route.split('|')[1];
+	var farm_name=localStorage.visit_farm_route.split('|')[0]
+	
+
+	//alert (localStorage.report_url+'farm_info?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_Id='+farm_Id+'&farm_combo_val_tr='+localStorage.farm_combo_val_tr)
+		$.ajax(localStorage.report_url+'farm_info?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_Id='+farm_Id+'&farm_combo_val_tr='+localStorage.farm_combo_val_tr,{
+
+								type: 'POST',
+								timeout: 30000,
+								error: function(xhr) {
+								 $("#wait_image_docProf").hide();
+								 $("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection..');
+													},
+								success:function(data, status,xhr){	
+									 $("#wait_image_docProf").hide();
+									 if (status!='success'){
+										$("#myerror_doctor_prof").html('Network Timeout. Please check your Internet connection...');
+										
+									 }
+									 else{	
+									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
+										
+											if (resultArray[0]=='FAILED'){
+														$("#myerror_doctor_prof").text(resultArray[1]);	
+														
+													}
+				else if (resultArray[0]=='SUCCESS'){	
+
+				var result_string=resultArray[1];
+
+
+
+               var farm_id =result_string.split('<fdfd>')[0]
+               var farm_name =result_string.split('<fdfd>')[1]
+               var route =result_string.split('<fdfd>')[2]
+               var latitude =result_string.split('<fdfd>')[3]
+               var longitude=result_string.split('<fdfd>')[4]
+               var image=result_string.split('<fdfd>')[5]
+               var farm_type =result_string.split('<fdfd>')[6]
+               var owner_name =result_string.split('<fdfd>')[7]
+               var address =result_string.split('<fdfd>')[8]
+               var medicine =result_string.split('<fdfd>')[9]
+               var manger_name =result_string.split('<fdfd>')[10]
+               var consultant_name =result_string.split('<fdfd>')[11]
+               var category =result_string.split('<fdfd>')[12]
+               var birds_animal =result_string.split('<fdfd>')[13]
+               var rearing_housing=result_string.split('<fdfd>')[14]
+
+
+               var feeding =result_string.split('<fdfd>')[15]
+               var watering =result_string.split('<fdfd>')[16]
+               var brooding =result_string.split('<fdfd>')[17]
+               var poandsSize =result_string.split('<fdfd>')[18]
+               var status =result_string.split('<fdfd>')[19]
+               var anniversary =result_string.split('<fdfd>')[20]
+               var dob=result_string.split('<fdfd>')[21]
+			   
+			  // alert(farm_type)
+			   if(farm_type=='POULTRY'){
+				   	$("#poultry_farm_id_text").val(farm_Id);
+					$("#addPName").val(farm_name)
+					$("#addPOName").val(owner_name)
+					$("#AddressP").val(address)
+					$("#addCDOBp").val(dob)
+					$("#anniversaryP").val(anniversary)
+					$("#chemist_medicine_p").val(medicine)
+					$("#managerP").val(manger_name)
+					$("#consultantP").val(consultant_name)
+					$("#birds_animal_p").val(birds_animal)
+		
+					$.afui.loadContent("#poultry_page",true,true,'right'); 
+				   
+			   }
+			   
+			   if(farm_type=='CATTLE'){
+				   	$("#cattle_farm_id_text").val(farm_Id);
+					$("#farm_name").val(farm_name)
+					$("#owner_name").val(owner_name)
+					$("#address").val(address)
+					$("#add_dob").val(dob)
+					$("#add_anniversary").val(anniversary)
+					$("#che_medicine").val(medicine)
+					$("#farm_manager").val(manger_name)
+					$("#farm_consultant").val(consultant_name)
+					$("#catbirds_animal").val(birds_animal)
+					
+					$.afui.loadContent("#cattle_page",true,true,'right'); 
+				   
+			   }
+			   
+												
+			   if(farm_type=='AQUA'){
+				   	$("#aqua_farm_id_text").val(farm_Id);
+					$("#addCNameA").val(farm_name)
+					$("#addAOName").val(owner_name)
+					$("#addressAq").val(address)
+					$("#addCDOBa").val(dob)
+					$("#anniversaryA").val(anniversary)
+					$("#chemist_medicine_a").val(medicine)
+					$("#managerA").val(manger_name)
+					$("#consultantA").val(consultant_name)
+					$("#birds_animal_a").val(birds_animal)
+					
+					$.afui.loadContent("#aqua_page",true,true,'right'); 
+				   
+			   }											
+										
+
+												
+												
+											}
+									   }
+									   }
+							 });//end ajax
+							
+//							 
+//							
+								
+
+
+	$("#myerror_chemist_prof").html('' )
+	$("#wait_image_chemProf").hide();
+	
+	
+}
 
