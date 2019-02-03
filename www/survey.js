@@ -1566,7 +1566,7 @@ function check_user() {
 	
 	//var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
-	//var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
@@ -1574,7 +1574,7 @@ function check_user() {
 //	localStorage.path_value_report='http://w05.yeapps.com/kpl/tour_web_members/'
 	
 	
-var  apipath_base_photo_dm='http://127.0.0.1:8000/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+//var  apipath_base_photo_dm='http://127.0.0.1:8000/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
 	//var path_value='http://w05.yeapps.com/kpl/team_report_mobile/teamShow_web?'
@@ -1608,7 +1608,7 @@ var  apipath_base_photo_dm='http://127.0.0.1:8000/novivo/syncmobile_417_new_ibn_
 		$("#doctorButton").hide();
 		$("#wait_image_login").show();
 		$("#error_logintext").val(apipath_base_photo_dm);
-		alert(apipath_base_photo_dm)
+		//alert(apipath_base_photo_dm)
 		$.ajax(apipath_base_photo_dm,{
 								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 			type: 'POST',
@@ -1685,7 +1685,7 @@ var  apipath_base_photo_dm='http://127.0.0.1:8000/novivo/syncmobile_417_new_ibn_
 							
 							//alert (localStorage.sync_date)
 							
-							alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							//$("#error_logintext").val(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 	
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -14930,7 +14930,7 @@ function poultry_submit() {
 
 		//Nazma Azam 2019-02-01 start
 	var poultry_farm_id_text=$("#poultry_farm_id_text").val();
-	alert(poultry_farm_id_text)
+	//alert(poultry_farm_id_text)
 	//Nazma Azam 2019-02-01 end
 	addPName=$("#addPName").val()
 	addPOName=$("#addPOName").val()
@@ -14974,8 +14974,9 @@ function poultry_submit() {
 //	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
 		// ===============2019-02-01 novivo2019 start ================
 				//Nazma Azam 2019-02-01 start
-
-		$.ajax(localStorage.base_url+'poultry_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addPName='+addPName+'&addPOName='+addPOName+'&tr_poultry='+tr_poultry+'&AddressP='+AddressP+'&MobileP='+MobileP+'&addCDOBp='+addCDOBp+'&anniversaryP='+anniversaryP+'&chemist_medicine_p='+chemist_medicine_p+'&managerP='+managerP+'&consultantP='+consultantP+'&addCCategoryP='+addCCategoryP+'&birds_animal_p='+birds_animal_p+'&rearingP='+rearingP+'&feedingP='+feedingP+'&wateringP='+wateringP+'&broodingP='+broodingP+'&addPondsP='+addPondsP+'&latitude='+latitude+'&longitude='+longitude+'&poultry_farm_id_text='+poultry_farm_id_text,{
+		var now = $.now();		
+		var imageName=localStorage.user_id+'P_'+now+'.jpg';
+		$.ajax(localStorage.base_url+'poultry_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addPName='+addPName+'&addPOName='+addPOName+'&tr_poultry='+tr_poultry+'&AddressP='+AddressP+'&MobileP='+MobileP+'&addCDOBp='+addCDOBp+'&anniversaryP='+anniversaryP+'&chemist_medicine_p='+chemist_medicine_p+'&managerP='+managerP+'&consultantP='+consultantP+'&addCCategoryP='+addCCategoryP+'&birds_animal_p='+birds_animal_p+'&rearingP='+rearingP+'&feedingP='+feedingP+'&wateringP='+wateringP+'&broodingP='+broodingP+'&addPondsP='+addPondsP+'&latitude='+latitude+'&longitude='+longitude+'&poultry_farm_id_text='+poultry_farm_id_text+'&image='+imageName,{
 		//Nazma Azam 2019-02-01 end
 
 									// ===============2019-02-01 novivo2019 end ================
@@ -15114,11 +15115,13 @@ function cattle_submit(){
 		
 	flag_lat_lon=1
 	if(flag_lat_lon == 1){
-	alert(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&tr_cattle='+tr_cattle+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&mobileC='+mobileC+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha+'&cattle_farm_id_text='+cattle_farm_id_text)
+	//alert(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&tr_cattle='+tr_cattle+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&mobileC='+mobileC+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha+'&cattle_farm_id_text='+cattle_farm_id_text)
 		
 		//Nazma Azam 2019-02-01 start
 									// ===============2019-02-01 novivo2019  start================
-  $.ajax(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&tr_cattle'+tr_cattle+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&mobileC='+mobileC+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha+'&cattle_farm_id_text='+cattle_farm_id_text,{
+  var now = $.now();		
+ var imageName=localStorage.user_id+'C_'+now+'.jpg';
+  $.ajax(localStorage.base_url+'cattleSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_name='+encodeURI(farm_name)+'&tr_cattle='+tr_cattle+'&owner_name='+encodeURI(owner_name)+'&address='+address+'&mobileC='+mobileC+'&add_dob='+add_dob+'&anniversary='+anniversary+'&chemist_medicine='+chemist_medicine+'&farm_manager='+farm_manager+'&farm_consultant='+farm_consultant+'&addCCategory='+addCCategory+'&birds_animal='+birds_animal+'&rearing='+rearing+'&feeding='+feeding+'&watering='+watering+'&brooding='+brooding+'&ponds_bigha='+ponds_bigha+'&cattle_farm_id_text='+cattle_farm_id_text+'&image='+imageName,{
 								
 									// ===============2019-02-01 novivo2019 end ================
 	  
@@ -15234,7 +15237,9 @@ function aqua_submit() {
 //	$("#doctor_prof").val(localStorage.report_url+'doc_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&docId='+visitDocId+'&dName='+dName+'&dSpaciality='+dSpaciality+'&dDegree='+dDegree+'&dDOB='+dDOB+'&dMDay='+dMDay+'&dMobile='+dMobile+'&dCAddress='+dCAddress+'&dCategory='+dCategory+'&dDist='+dDist+'&dThana='+dThana)
 										// ===============2019-02-01 start novivo2019 start ================
 		//Nazma Azam 2019-02-01 start
-		$.ajax(localStorage.base_url+'aqua_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addCNameA='+addCNameA+'&addAOName='+addAOName+'&tr_aqua='+tr_aqua+'&addressAq='+addressAq+'&mobileA='+mobileA+'&addCDOBa='+addCDOBa+'&anniversaryA='+anniversaryA+'&chemist_medicine_a='+chemist_medicine_a+'&managerA='+managerA+'&consultantA='+consultantA+'&addCCategoryA='+addCCategoryA+'&birds_animal_a='+birds_animal_a+'&rearingA='+rearingA+'&feedingA='+feedingA+'&wateringA='+wateringA+'&broodingA='+broodingA+'&addCPhoneA='+addCPhoneA+'&latitude='+latitude+'&longitude='+longitude+'&aqua_farm_id_text='+aqua_farm_id_text,{
+		var now = $.now();		
+		var imageName=localStorage.user_id+'A_'+now+'.jpg';
+		$.ajax(localStorage.base_url+'aqua_info_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&addCNameA='+addCNameA+'&addAOName='+addAOName+'&tr_aqua='+tr_aqua+'&addressAq='+addressAq+'&mobileA='+mobileA+'&addCDOBa='+addCDOBa+'&anniversaryA='+anniversaryA+'&chemist_medicine_a='+chemist_medicine_a+'&managerA='+managerA+'&consultantA='+consultantA+'&addCCategoryA='+addCCategoryA+'&birds_animal_a='+birds_animal_a+'&rearingA='+rearingA+'&feedingA='+feedingA+'&wateringA='+wateringA+'&broodingA='+broodingA+'&addCPhoneA='+addCPhoneA+'&latitude='+latitude+'&longitude='+longitude+'&aqua_farm_id_text='+aqua_farm_id_text+'&image='+imageName,{
 
 			//Nazma Azam 2019-02-01 end
 									// ===============2019-02-01 end novivo2019 end ================
@@ -15301,9 +15306,9 @@ function farmList_page(){
 	//Nazma Azam 2019-02-01 start
 	var farm_combo_id_lv_tr=$("#farm_combo_id_lv_tr").val();
 	localStorage.farm_combo_val_tr=farm_combo_id_lv_tr
-	alert(localStorage.farm_combo_val_tr)
+	//alert(localStorage.farm_combo_val_tr)
 	//alert(farm_combo_id_lv_tr);
-	alert (localStorage.base_url+'farmListData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_combo_val='+localStorage.farm_combo_val_tr)
+	//alert (localStorage.base_url+'farmListData?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&farm_combo_val='+localStorage.farm_combo_val_tr)
 	
 	//Nazma Azam 2019-02-01 end
 	
@@ -15347,7 +15352,7 @@ function farmList_page(){
 										
 										var farmShow_list=''
 										
-										for (var i=0; i < FarmListLength; i++){
+										for (var i=0; i < FarmListLength-1; i++){
 												var farmListArray = FarmList[i].split('<fd>');
 												
 												var farmID=farmListArray[0];
@@ -15444,6 +15449,8 @@ function page_farm_profile(getData) {
                var anniversary =result_string.split('<fdfd>')[20]
                var dob=result_string.split('<fdfd>')[21]
 			   
+			   var mobile_no=result_string.split('<fdfd>')[22]
+			   
 			  // alert(farm_type)
 			   if(farm_type=='POULTRY'){
 				   	$("#poultry_farm_id_text").val(farm_Id);
@@ -15456,6 +15463,8 @@ function page_farm_profile(getData) {
 					$("#managerP").val(manger_name)
 					$("#consultantP").val(consultant_name)
 					$("#birds_animal_p").val(birds_animal)
+					
+					$("#MobileP").val(mobile_no)
 		
 					$.afui.loadContent("#poultry_page",true,true,'right'); 
 				   
@@ -15473,6 +15482,7 @@ function page_farm_profile(getData) {
 					$("#farm_consultant").val(consultant_name)
 					$("#catbirds_animal").val(birds_animal)
 					
+					$("#mobileC").val(mobile_no)
 					$.afui.loadContent("#cattle_page",true,true,'right'); 
 				   
 			   }
@@ -15490,6 +15500,7 @@ function page_farm_profile(getData) {
 					$("#consultantA").val(consultant_name)
 					$("#birds_animal_a").val(birds_animal)
 					
+					$("#mobileA").val(mobile_no)
 					$.afui.loadContent("#aqua_page",true,true,'right'); 
 				   
 			   }											
