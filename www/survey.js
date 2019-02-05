@@ -1564,24 +1564,17 @@ function check_user() {
 	
 	
 	
+	//var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	//var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
-	
-	//localStorage.path_value_tour='http://w05.yeapps.com/kpl/tour_web/'
-//	localStorage.path_value_report='http://w05.yeapps.com/kpl/tour_web_members/'
-	
+
 	
 //var  apipath_base_photo_dm='http://127.0.0.1:8000/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
-	
-	//var path_value='http://w05.yeapps.com/kpl/team_report_mobile/teamShow_web?'
-	
-	
-	
-	// var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_test/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+
 
 
 
@@ -14469,7 +14462,7 @@ function back_page_check_in() {
 
 //		Nazma Azam 2019-01-28 start
 function m_check_in_Submit(){
-	
+	//alert ('nadira')
 	$("#wait_m_check_in").show();
 	
 	getLocationInfo_ready()
@@ -14533,6 +14526,7 @@ function m_check_in_Submit(){
 
 else{
 	alert('Please Open Your GPRS !')
+	$("#wait_m_check_in").hide();	
 	}
 
 
@@ -14605,6 +14599,7 @@ function e_check_in_Submit(){
 
 else{
 	alert('Please Open Your GPRS !')
+	$("#wait_m_check_in").hide();
 	}
 
 }
@@ -14670,6 +14665,7 @@ function m_check_out_Submit(){
 	} //if (latitude != '' || latitude != '0' || longitude != '' || longitude != '0'){
 else{
 	alert('Please Open Your GPRS !')
+	$("#wait_m_check_in").hide();
 	}
 
 
@@ -14737,6 +14733,7 @@ function e_check_out_Submit(){
 
 else{
 	alert('Please Open Your GPRS !')
+	$("#wait_m_check_in").hide();
 	}
 
 }
