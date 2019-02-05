@@ -1559,10 +1559,7 @@ function check_user() {
 	
 	
 	
-	
-	
-	
-	
+
 	
 	//var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
