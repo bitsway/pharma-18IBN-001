@@ -12030,6 +12030,7 @@ function checkInbox() {
 										success:function(data, status,xhr){	
 											var dStr = data.split('<SYNCDATA>')[0];
 											var cStr = data.split('<SYNCDATA>')[1];
+											var attendanceStr = data.split('<SYNCDATA>')[2];
 											 if (dStr==1){
 												$("#inboxShow").html('<img onClick="page_inbox();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="inbox_1.png">');
 												
@@ -12040,6 +12041,19 @@ function checkInbox() {
 											 if (cStr!=''){
 												$("#error_image").html(cStr);
 												
+											 }
+											// =====Attendance
+											 if (attendanceStr!=''){
+												mcheckinFlag=attendanceStr.split('<fd>')[0]
+												mcheckoutFlag=attendanceStr.split('<fd>')[1]
+												echeckinFlag=attendanceStr.split('<fd>')[2]
+												echeckoutFlag=attendanceStr.split('<fd>')[3]
+												if (mcheckinFlag==1){$("#btn_m_check_in_submit").hide();}
+												if (mcheckoutFlag==1){$("#btn_m_check_out_submit").hide();}
+												if (echeckinFlag==1){
+													$("#btn_e_check_in_submit").hide();
+													$("#btn_m_check_out_submit").hide();$("#btn_m_check_in_submit").hide();}
+												if (echeckoutFlag==1){$("#btn_e_check_out_submit").hide();}
 											 }
 						
 							  }
@@ -14449,6 +14463,11 @@ function marketNext_Doc_online() {
 //=============Check in=========
 //		Nazma Azam 2019-01-13 start
 function page_check_in_link() {	
+	$("#wait_m_check_in").hide();
+	$("#wait_m_check_out").hide();
+	$("#wait_e_check_in").hide();
+	$("#wait_e_check_out").hide();
+	checkInbox();
 	$.afui.loadContent("#check_in_Page",true,true,'right');
 }
 
@@ -14460,7 +14479,7 @@ function back_page_check_in() {
 //		Nazma Azam 2019-01-28 start
 function m_check_in_Submit(){
 	//alert ('nadira')
-	$("#wait_m_check_in").show();
+	$("#wait_m_check_in").show();$("#btn_m_check_in_submit").hide();
 	
 	getLocationInfo_ready()
 	var latitude= localStorage.latitude
@@ -14474,7 +14493,7 @@ function m_check_in_Submit(){
 		flag_lat_lon = 0
 		}
 		
-	
+	//flag_lat_lon = 1
 	if(flag_lat_lon == 1){
 
 		
@@ -14487,14 +14506,14 @@ function m_check_in_Submit(){
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
-							//	$("#wait_image_rep_pendingTour").hide();
+								$("#wait_m_check_in").hide();$("#btn_m_check_in_submit").show();
 								$("#myerror_check_in").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									
 									 if (status!='success'){
 										$("#myerror_check_in").html('Network Timeout. Please check your Internet connection...');
-										$("#wait_m_check_in").hide();
+										$("#wait_m_check_in").hide();$("#btn_m_check_in_submit").show();
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
@@ -14502,14 +14521,14 @@ function m_check_in_Submit(){
 										if (resultArray[0]=='FAILED'){
 											$("#myerror_check_in").val('');	
 											$("#myerror_check_in").html(resultArray[1]);	
-											$("#wait_m_check_in").hide();
+											$("#wait_m_check_in").hide();$("#btn_m_check_in_submit").show();
 ;
 										}
 										
 										else if (resultArray[0]=='SUCCESS'){
 										$('#myerror_check_in').html(resultArray[1]);
-										$("#wait_m_check_in").hide();										
-									
+										$("#wait_m_check_in").hide();$("#btn_m_check_in_submit").hide();										
+										
 										}
 								
 							} //else
@@ -14518,12 +14537,12 @@ function m_check_in_Submit(){
 						  
 				 });//end ajax
 //	alert ('sdasf')
-	
+	checkInbox();
 	} //if (latitude != '' || latitude != '0' || longitude != '' || longitude != '0'){
 
 else{
 	alert('Please Open Your GPRS !')
-	$("#wait_m_check_in").hide();	
+	$("#wait_m_check_in").hide();$("#btn_m_check_in_submit").show();
 	}
 
 
@@ -14531,7 +14550,7 @@ else{
 
 
 function e_check_in_Submit(){
-	$("#wait_m_check_in").show();
+	$("#wait_e_check_in").show();$("#btn_e_check_in_submit").hide();
 	getLocationInfo_ready()
 	
 	var latitude= localStorage.latitude
@@ -14547,7 +14566,7 @@ function e_check_in_Submit(){
 
 	
 	
-	
+	//flag_lat_lon = 1
 	if(flag_lat_lon == 1){
 
 
@@ -14559,20 +14578,21 @@ function e_check_in_Submit(){
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
+									$("#wait_e_check_in").hide();$("#btn_e_check_in_submit").show();
 								$("#myerror_check_in").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									
 									 if (status!='success'){
 										$("#myerror_check_in").html('Network Timeout. Please check your Internet connection...');
-										$("#wait_m_check_in").hide();
+										$("#wait_e_check_in").hide();$("#btn_e_check_in_submit").show();
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 											
 										if (resultArray[0]=='FAILED'){
 											$("#myerror_check_in").html(resultArray[1]);
-											$("#wait_m_check_in").hide();
+											$("#wait_e_check_in").hide();$("#btn_e_check_in_submit").show();
 
 										}
 										
@@ -14580,7 +14600,7 @@ function e_check_in_Submit(){
 																			
 										$('#myerror_check_in').html(resultArray[1]);
 										
-										$("#wait_m_check_in").hide();
+										$("#wait_e_check_in").hide();$("#btn_e_check_in_submit").hide();
 									
 										}
 								
@@ -14591,18 +14611,18 @@ function e_check_in_Submit(){
 						  
 				 });//end ajax
 //	alert ('sdasf')
-	
+	checkInbox();
 	} //if (latitude != '' || latitude != '0' || longitude != '' || longitude != '0'){
 
 else{
 	alert('Please Open Your GPRS !')
-	$("#wait_m_check_in").hide();
+	$("#wait_e_check_in").hide();$("#btn_e_check_in_submit").show();
 	}
 
 }
 
 function m_check_out_Submit(){
-	$("#wait_m_check_in").show();
+	$("#wait_m_check_out").show();$("#btn_m_check_out_submit").hide();
 	getLocationInfo_ready()
 	
 	var latitude= localStorage.latitude
@@ -14614,7 +14634,7 @@ function m_check_out_Submit(){
 		flag_lat_lon = 0
 		}
 		
-	
+	//flag_lat_lon = 1
 	if(flag_lat_lon == 1){
 
 	
@@ -14626,13 +14646,14 @@ function m_check_out_Submit(){
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
+									$("#wait_m_check_out").hide();$("#btn_m_check_out_submit").show();
 								$("#myerror_check_in").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									
 									 if (status!='success'){
 										$("#myerror_check_in").html('Network Timeout. Please check your Internet connection...');
-										$("#wait_m_check_in").hide();
+										$("#wait_m_check_out").hide();$("#btn_m_check_out_submit").show();
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
@@ -14640,14 +14661,14 @@ function m_check_out_Submit(){
 										if (resultArray[0]=='FAILED'){
 											$("#myerror_check_in").val('');
 											$("#myerror_check_in").html(resultArray[1]);	
-											$("#wait_m_check_in").hide();
+											$("#wait_m_check_out").hide();$("#btn_m_check_out_submit").show();
 
 										}
 										
 										else if (resultArray[0]=='SUCCESS'){
 										$("#myerror_check_in").val('');	
 										$('#myerror_check_in').html(resultArray[1]);
-										$("#wait_m_check_in").hide();
+										$("#wait_m_check_out").hide();$("#btn_m_check_out_submit").hide();
 										
 									
 										}
@@ -14658,18 +14679,18 @@ function m_check_out_Submit(){
 						  
 				 });//end ajax
 //	alert ('sdasf')
-	
+	checkInbox();
 	} //if (latitude != '' || latitude != '0' || longitude != '' || longitude != '0'){
 else{
 	alert('Please Open Your GPRS !')
-	$("#wait_m_check_in").hide();
+	$("#wait_m_check_out").hide();$("#btn_m_check_out_submit").show();
 	}
 
 
 }
 
 function e_check_out_Submit(){
-	$("#wait_m_check_in").show();
+	$("#wait_e_check_out").show();$("#btn_e_check_out_submit").hide();
 	getLocationInfo_ready()
 	
 	var latitude= localStorage.latitude
@@ -14681,7 +14702,7 @@ function e_check_out_Submit(){
 		flag_lat_lon = 0
 		}
 		
-	
+	//flag_lat_lon = 1
 	if(flag_lat_lon == 1){
 
 
@@ -14693,20 +14714,21 @@ function e_check_out_Submit(){
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
+									$("#wait_e_check_out").hide();$("#btn_e_check_out_submit").show();
 								$("#myerror_check_in").html('Network Timeout. Please check your Internet connection..');
 													},
 								success:function(data, status,xhr){	
 									
 									 if (status!='success'){
 										$("#myerror_check_in").html('Network Timeout. Please check your Internet connection...');
-										$("#wait_m_check_in").hide();
+										$("#wait_e_check_out").hide();$("#btn_e_check_out_submit").show();
 									 }
 									 else{	
 									 	var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
 											
 										if (resultArray[0]=='FAILED'){
 											$("#myerror_check_in").html(resultArray[1]);	
-											$("#wait_m_check_in").hide();
+											$("#wait_e_check_out").hide();$("#btn_e_check_out_submit").show();
 
 										}
 										
@@ -14714,7 +14736,7 @@ function e_check_out_Submit(){
 																			
 										$('#myerror_check_in').html(resultArray[1]);
 										
-										$("#wait_m_check_in").hide();
+										$("#wait_e_check_out").hide();$("#btn_e_check_out_submit").hide();
 									
 										}
 								
@@ -14725,12 +14747,12 @@ function e_check_out_Submit(){
 						  
 				 });//end ajax
 //	alert ('sdasf')
-	
+	checkInbox();
 	} //if (latitude != '' || latitude != '0' || longitude != '' || longitude != '0'){
 
 else{
 	alert('Please Open Your GPRS !')
-	$("#wait_m_check_in").hide();
+	$("#wait_e_check_out").hide();$("#btn_e_check_out_submit").show();
 	}
 
 }
