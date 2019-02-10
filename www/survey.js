@@ -2530,8 +2530,9 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 		
 }//Function
 function setScheduleDateDoc(scheduleDate){
-	
+	//alert (scheduleDate)
 	localStorage.scheduled_date=scheduleDate;
+	localStorage.scheduled_date_save=scheduleDate;
 	localStorage.setScheduleDateDoc=1;
 	//alert (localStorage.scheduled_date)
 }
@@ -2678,6 +2679,7 @@ function doctor_visit_plan() {
 															if ((docMarketDate==CDate) &&(todayFlag==0)) {
 																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;background-color:#EDFBFE"><font  style="font-size:24; font-weight:bold;color:#009">Today</font></li>';
 																todayFlag=1
+																
 															}
 															if (docMarketID!=''){
 																docMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="setScheduleDateDoc(\''+docMarketDate+'\');marketNextLV(\''+docmarketNameID+'\');"><font class="name" style="font-size:18; font-weight:bold">'+docMarketName+'</a></font></li>';
@@ -7608,7 +7610,7 @@ function visitSubmit_doc(){
 											else {	
 												$("#visit_submit_doc").hide();
 												$("#wait_image_visit_submit_doc").show();
-												//alert (localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg=' +encodeURI(msg)+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others+'&location_detail='+localStorage.location_detail+'imageName='+imageName)	
+												//alert (localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg=' +encodeURI(msg)+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others+'&location_detail='+localStorage.location_detail+'&imageName='+imageName+'&v_shift='+v_shift)	
 										$.ajax(localStorage.base_url+'doctor_visit_submit_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&msg=' +encodeURI(msg)+'&lat='+lat+'&long='+longitude+'&v_with='+v_with+'&route='+market_Id+'&doc_others='+doc_others+'&location_detail='+localStorage.location_detail+'&imageName='+imageName+'&v_shift='+v_shift,{
 										// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 										type: 'POST',
@@ -8270,8 +8272,9 @@ function saveDocvisit(){
 	visitClientId=localStorage.visit_client.split('|')[1]	
 	visitClientName=localStorage.visit_client.split('|')[0]
 	visit_type=localStorage.visit_type
-	scheduled_date=localStorage.scheduled_date
-	//alert (localStorage.scheduled_date)
+	scheduled_date=localStorage.scheduled_date_save
+	//alert (scheduled_date)
+	
 	ppm_doc_Str=localStorage.productppmStr;
 
 	notes= $("#doc_feedback").val();
@@ -8346,12 +8349,12 @@ function saveDocvisit(){
 								}
 							}
 						}
-									
+					//alert (scheduled_date)				
 						// alert (docSaveData+visitClientName+'<d>'+localStorage.visit_market_show+'<d>'+visitClientId+'<d>'+visit_type+'<d>'+scheduled_date+'<d>'+localStorage.productSampleStr+'<d>'+localStorage.productGiftStr+'<d>'+localStorage.campaign_doc_str+'<d>'+localStorage.productppmStr+'<d>'+notes+'<d>'+lat+'<d>'+longitude+'<d>'+v_with+'<d>'+market_Id+'<d>'+doc_others+'<d>'+localStorage.visit_client+'<doc>')
 			
 							//var docSaveData=localStorage.docSaveData
 							//alert (localStorage.visit_client+'<d>'+visitClientId+'<d>'+visit_type+'<d>'+scheduled_date+'<d>'+encodeURI(msg)+'<d>'+lat+'<d>'+longitude+'<d>'+v_with+'<d>'+market_Id+'<d>'+doc_others+'<doc>')
-							//alert ('sdas')
+							//alert (scheduled_date)
 							var doctor_visit_save=docSaveData+visitClientName+'<d>'+localStorage.visit_market_show+'<d>'+visitClientId+'<d>'+visit_type+'<d>'+scheduled_date+'<d>'+localStorage.productSampleStr+'<d>'+localStorage.productGiftStr+'<d>'+localStorage.campaign_doc_str+'<d>'+localStorage.productppmStr+'<d>'+notes+'<d>'+lat+'<d>'+longitude+'<d>'+v_with+'<d>'+market_Id+'<d>'+doc_others+'<d>'+localStorage.visit_client+'<d>'+v_shift+'<doc>'
 							
 							localStorage.docSaveData=doctor_visit_save
