@@ -1561,11 +1561,11 @@ function check_user() {
 	
 
 	
-	//var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://w05.yeapps.com/kpl/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var  apipath_base_photo_dm='http://w05.yeapps.com/mundi/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
-	//var  apipath_base_photo_dm='http://w011.yeapps.com/novivo/syncmobile_417_new_ibn_newtest_web/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+	
+	//var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 
 	
@@ -1617,7 +1617,7 @@ function check_user() {
 				
 				var dtaStr=data.replace('<start>','').replace('<end>','')
 				var resultArray = dtaStr.split('<fd>');	
-				//alert(dtaStr)
+				//alert(resultArray.length)
 					if(resultArray.length>3){
 						var base_url=resultArray[0];
 						var photo_url=resultArray[1];
@@ -1758,6 +1758,17 @@ function check_user() {
 													localStorage.repType=resultArray[40]
 													
 													localStorage.prSampleStr =resultArray[41]
+													
+													localStorage.gallery=resultArray[42]
+													
+													
+													
+													if (localStorage.gallery=='NO'){
+
+														$(gallery_hide_div).hide()
+													}else {
+														$(gallery_hide_div).show()
+													}
 													
 													//alert (resultArray[40])
 													
@@ -12695,6 +12706,13 @@ function cancelPicture(i){
 	if (picNo==8){localStorage.prPhoto8=''}
 	if (picNo==9){localStorage.prPhoto9=''}
 	if (picNo==10){localStorage.prPhoto10=''}
+	if (picNo==11){localStorage.prPhoto11=''}
+	if (picNo==12){localStorage.prPhoto12=''}
+	if (picNo==13){localStorage.prPhoto13=''}
+	if (picNo==14){localStorage.prPhoto14=''}
+	if (picNo==15){localStorage.prPhoto15=''}
+	
+	
 }
 
 
@@ -14186,6 +14204,23 @@ function cameraSuccess(uri){
 	if (picNo==10){
 		localStorage.prPhoto10=uri
 	}
+	
+	if (picNo==11){
+		localStorage.prPhoto11=uri
+	}
+	if (picNo==12){
+		localStorage.prPhoto12=uri
+	}
+	if (picNo==13){
+		localStorage.prPhoto13=uri
+	}
+	if (picNo==14){
+		localStorage.prPhoto14=uri
+	}
+	if (picNo==15){
+		localStorage.prPhoto15=uri
+	}
+	
 	//alert (uri)
 	takePicture();
 	
@@ -14201,7 +14236,89 @@ function cameraError(message){
     //alert("Canceled!"); 
 	
 }
+//==================================Gallery========================
+function takePictureG(){
+navigator.camera.getPicture( cameraSuccessG, cameraErrorG, {
+		quality: 90,
+		targetWidth: 400,
+		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+       // destinationType: Camera.DestinationType.FILE_URI,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true ,
+        correctOrientation: true,
+        saveToPhotoAlbum: true
+    }); 
+	
+}
 
+function cameraSuccessG(uri){  
+	var picNo=parseInt(localStorage.picFlag)+1 
+	var imageDiv="myImage"+picNo
+	var imageText="prPhoto"+picNo
+	localStorage.picFlag=picNo
+	var image = document.getElementById(imageDiv);
+	image.src = uri;
+	imagePath = uri;
+	if (picNo==1){
+		localStorage.prPhoto1=uri
+	}
+	if (picNo==2){
+		localStorage.prPhoto2=uri
+	}
+	if (picNo==3){
+		localStorage.prPhoto3=uri
+	}
+	if (picNo==4){
+		localStorage.prPhoto4=uri
+	}
+	if (picNo==5){
+		localStorage.prPhoto5=uri
+	}
+	if (picNo==6){
+		localStorage.prPhoto6=uri
+	}
+	if (picNo==7){
+		localStorage.prPhoto7=uri
+	}
+	if (picNo==8){
+		localStorage.prPhoto8=uri
+	}
+	if (picNo==9){
+		localStorage.prPhoto9=uri
+	}
+	if (picNo==10){
+		localStorage.prPhoto10=uri
+	}
+	
+	if (picNo==11){
+		localStorage.prPhoto11=uri
+	}
+	if (picNo==12){
+		localStorage.prPhoto12=uri
+	}
+	if (picNo==13){
+		localStorage.prPhoto13=uri
+	}
+	if (picNo==14){
+		localStorage.prPhoto14=uri
+	}
+	if (picNo==15){
+		localStorage.prPhoto15=uri
+	}
+	//alert (uri)
+	takePictureG();
+	
+	
+   
+    
+	$("#"+imageText).val(imagePath);
+        
+}
+
+function cameraErrorG(message){
+	var a=''
+    //alert("Canceled!"); 
+	
+}
 /*************** jahangirEditedStart16Feb medicine search******************/
 function searchMedicine(){
 	// opitemSearch
