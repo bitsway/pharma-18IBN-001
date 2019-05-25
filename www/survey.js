@@ -2445,7 +2445,7 @@ localStorage.report_button_tr='<input type="submit" id="loginButton" onClick="s_
 											$("#pr_id_lv").empty()
 											
 											setPrProduct()
-
+											setPrImage()
 
 //				=========================================prend==============
 
@@ -14237,6 +14237,151 @@ function cameraError(message){
 	
 }
 //==================================Gallery========================
+function setPrImage(){  
+	var i=1
+	for (i=1;i<16;i++){
+	
+		var picNo=parseInt(i)
+		
+		if ((localStorage.prPhoto1!='')&& (i==1)){
+			alert (localStorage.prPhoto1)
+			uri=localStorage.prPhoto1
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto2!='')&& (i==2)){
+			uri=localStorage.prPhoto2
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto3!='')&& (i==3)){
+			uri=localStorage.prPhoto3
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto4!='')&& (i==4)){
+			uri=localStorage.prPhoto4
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto5!='')&& (i==5)){
+			uri=localStorage.prPhoto5
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto6!='')&& (i==6)){
+			uri=localStorage.prPhoto6
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto7!='')&& (i==7)){
+			uri=localStorage.prPhoto7
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto8!='')&& (i==8)){
+			uri=localStorage.prPhoto8
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto9!='')&& (i==9)){
+			uri=localStorage.prPhoto9
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto10!='')&& (i==10)){
+			uri=localStorage.prPhoto10
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}if ((localStorage.prPhoto11!='')&& (i==11)){
+			uri=localStorage.prPhoto11
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto12!='')&& (i==12)){
+			uri=localStorage.prPhoto12
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto13!='')&& (i==13)){
+			uri=localStorage.prPhoto13
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto14!='')&& (i==14)){
+			uri=localStorage.prPhoto14
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+		if ((localStorage.prPhoto15!='')&& (i==15)){
+			uri=localStorage.prPhoto15
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = uri;
+			imagePath = uri;
+		}
+	}
+     
+}
+
 function takePictureG(){
 navigator.camera.getPicture( cameraSuccessG, cameraErrorG, {
 		quality: 90,
