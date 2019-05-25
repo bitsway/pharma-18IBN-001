@@ -12659,6 +12659,7 @@ function page_PrescriptionCapture() {
 	localStorage.doctor_pr=1;
 	localStorage.tourFlag=0
 	localStorage.saved_data_submit=0;
+	setPrImage();
 	$.afui.loadContent("#page_PrescriptionCapture",true,true,'right');
 }
 function page_Link() {	
@@ -14237,22 +14238,24 @@ function cameraError(message){
 	
 }
 //==================================Gallery========================
-//function setPrImage(){  
-//	var i=1
-//	for (i=1;i<16;i++){
-//	
-//		var picNo=parseInt(i)
-//		
-//		if ((localStorage.prPhoto1!='')&& (i==1)){
-//			alert (localStorage.prPhoto1)
-//			uri=localStorage.prPhoto1
-//			var imageDiv="myImage"+picNo
-//			var imageText="prPhoto"+picNo
-//			localStorage.picFlag=picNo
-//			var image = document.getElementById(imageDiv);
-//			image.src = uri;
-//			imagePath = uri;
-//		}
+function setPrImage(){  
+	var i=1
+	for (i=1;i<16;i++){
+	
+		var picNo=parseInt(i)
+		//alert (localStorage.prPhoto1)
+		//alert (i)
+		
+		if ((localStorage.prPhoto1!='')&& (i==1)){
+			alert (localStorage.prPhoto1)
+			//uri=localStorage.prPhoto1
+			var imageDiv="myImage"+picNo
+			var imageText="prPhoto"+picNo
+			localStorage.picFlag=picNo
+			var image = document.getElementById(imageDiv);
+			image.src = localStorage.prPhoto1;
+			imagePath = localStorage.prPhoto1;
+		}
 //		if ((localStorage.prPhoto2!='')&& (i==2)){
 //			uri=localStorage.prPhoto2
 //			var imageDiv="myImage"+picNo
@@ -14378,9 +14381,9 @@ function cameraError(message){
 //			image.src = uri;
 //			imagePath = uri;
 //		}
-//	}
-//     
-//}
+	}
+     
+}
 
 function takePictureG(){
 navigator.camera.getPicture( cameraSuccessG, cameraErrorG, {
