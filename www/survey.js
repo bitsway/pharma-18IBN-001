@@ -244,7 +244,7 @@ var  apipath ='http://a007.yeapps.com/acme/medSearch/'
 		
 		//reports();
 	//===============SetPR=================
-	for (j=0; j < 10; j++){
+	for (j=0; j < 15; j++){
 		var picNo=parseInt(j)+1 
 		var imageDiv="myImage"+picNo
 		var imageText="prPhoto"+picNo
@@ -281,8 +281,21 @@ var  apipath ='http://a007.yeapps.com/acme/medSearch/'
 		if (picNo==10){
 			imageSource=localStorage.prPhoto10
 		}
-		
-		
+		if (picNo==11){
+			imageSource=localStorage.prPhoto11
+		}
+		if (picNo==12){
+			imageSource=localStorage.prPhoto12
+		}
+		if (picNo==13){
+			imageSource=localStorage.prPhoto13
+		}
+		if (picNo==14){
+			imageSource=localStorage.prPhoto14
+		}
+		if (picNo==15){
+			imageSource=localStorage.prPhoto15
+		}
 		
 		
 		//alert (imageSource)
@@ -1503,16 +1516,16 @@ function afterSync(){
 		
 		localStorage.picFlag=0;
 		
-		localStorage.prPhoto1=''
-		localStorage.prPhoto2=''
-		localStorage.prPhoto3=''
-		localStorage.prPhoto4=''
-		localStorage.prPhoto5=''
-		localStorage.prPhoto6=''
-		localStorage.prPhoto7=''
-		localStorage.prPhoto8=''
-		localStorage.prPhoto9=''
-		localStorage.prPhoto10=''
+		//localStorage.prPhoto1=''
+//		localStorage.prPhoto2=''
+//		localStorage.prPhoto3=''
+//		localStorage.prPhoto4=''
+//		localStorage.prPhoto5=''
+//		localStorage.prPhoto6=''
+//		localStorage.prPhoto7=''
+//		localStorage.prPhoto8=''
+//		localStorage.prPhoto9=''
+//		localStorage.prPhoto10=''
 		
 		
 		//Oppertunuty
@@ -12659,7 +12672,7 @@ function page_PrescriptionCapture() {
 	localStorage.doctor_pr=1;
 	localStorage.tourFlag=0
 	localStorage.saved_data_submit=0;
-	setPrImage();
+	//setPrImage();
 	$.afui.loadContent("#page_PrescriptionCapture",true,true,'right');
 }
 function page_Link() {	
@@ -14238,24 +14251,24 @@ function cameraError(message){
 	
 }
 //==================================Gallery========================
-function setPrImage(){  
-	var i=1
-	for (i=1;i<16;i++){
-	
-		var picNo=parseInt(i)
-		//alert (localStorage.prPhoto1)
-		//alert (i)
-		
-		if ((localStorage.prPhoto1!='')&& (i==1)){
-			alert (localStorage.prPhoto1)
-			//uri=localStorage.prPhoto1
-			var imageDiv="myImage"+picNo
-			var imageText="prPhoto"+picNo
-			localStorage.picFlag=picNo
-			var image = document.getElementById(imageDiv);
-			image.src = localStorage.prPhoto1;
-			imagePath = localStorage.prPhoto1;
-		}
+//function setPrImage(){  
+//	var i=1
+//	for (i=1;i<16;i++){
+//	
+//		var picNo=parseInt(i)
+//		//alert (localStorage.prPhoto1)
+//		//alert (i)
+//		
+//		if ((localStorage.prPhoto1!='')&& (i==1)){
+//			alert (localStorage.prPhoto1)
+//			//uri=localStorage.prPhoto1
+//			var imageDiv="myImage"+picNo
+//			var imageText="prPhoto"+picNo
+//			localStorage.picFlag=picNo
+//			var image = document.getElementById(imageDiv);
+//			image.src = localStorage.prPhoto1;
+//			imagePath = localStorage.prPhoto1;
+//		}
 //		if ((localStorage.prPhoto2!='')&& (i==2)){
 //			uri=localStorage.prPhoto2
 //			var imageDiv="myImage"+picNo
