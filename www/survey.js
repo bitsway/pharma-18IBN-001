@@ -14394,9 +14394,9 @@ function cameraError(message){
 //			image.src = uri;
 //			imagePath = uri;
 //		}
-	}
-     
-}
+//	}
+//     
+//}
 
 function takePictureG(){
 navigator.camera.getPicture( cameraSuccessG, cameraErrorG, {
