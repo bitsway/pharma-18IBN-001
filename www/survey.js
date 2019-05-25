@@ -1514,7 +1514,7 @@ function afterSync(){
 		localStorage.market_doctorVisit=''
 		localStorage.tourSubmitStr=''
 		
-		localStorage.picFlag=0;
+		//localStorage.picFlag=0;
 		
 		//localStorage.prPhoto1=''
 //		localStorage.prPhoto2=''
